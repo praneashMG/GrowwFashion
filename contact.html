@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact  - Grow Fashion</title>
+        <link rel="icon" type="image/jpeg" href="images\growwpark_logo.jpg">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+        /* ===== GLOBAL RESET & VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background: var(--body-bg);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            padding-top: 84px;
+        }
+
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --nav-bg: #f7f0f0;
+            --text-color: #111;
+            --border-color: #ddd;
+            --navbar-bg: #ffffff;
+            --body-bg: #ffffff;
+            --section-light-bg: #f9f5f0;
+            --section-dark-bg: #1a1a1a;
+            --card-bg: #ffffff;
+            --footer-bg: #2c1810;
+            --footer-text: #d4c5b8;
+            --primary-color: #6b1022;
+            --primary-light: #8b1a2e;
+            --accent-color: #d32f2f;
+        }
+
+        /* ===== DARK MODE VARIABLES ===== */
+        body.dark {
+            --nav-bg: #1a1a1a;
+            --text-color: #f5f5f5;
+            --border-color: #333;
+            --navbar-bg: #2a2a2a;
+            --body-bg: #121212;
+            --section-light-bg: #1a1a1a;
+            --section-dark-bg: #2a2a2a;
+            --card-bg: #2a2a2a;
+            --footer-bg: #1a1a1a;
+            --footer-text: #b0b0b0;
+        }
+
+        /* ===== NAVBAR WRAPPER (EXACT COPY FROM ABOUT.HTML) ===== */
+        .navbar-wrapper {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            padding: 12px 16px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(107, 16, 34, 0.2);
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--navbar-bg);
+            border-radius: 16px;
+            padding: 8px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            position: relative;
+            transition: background-color 0.3s ease;
+            min-height: 60px;
+        }
+
+        /* ===== LOGO ===== */
+       .logo {
+            font-size: 26px;
+            font-weight: 800;
+            text-decoration: none;
+          color: rgb(235, 24, 123);
+
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        /* .logo span {
+            color: #b0b0b0;
+        } */
+
+        body.dark .logo {
+            color: rgb(235, 24, 123);
+        }
+
+        /* body.dark .logo span {
+            color: #ff8ba7;
+        } */
+
+        /* ===== NAV CONTAINERS ===== */
+        .nav-left {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-right {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* ===== CENTER MENU ===== */
+        .nav-center ul {
+            list-style: none;
+            display: flex;
+            gap: 6px;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-center ul li {
+            position: relative;
+        }
+
+        .nav-center ul li a {
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-color);
+            letter-spacing: 0.3px;
+            padding: 10px 14px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-center ul li a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .nav-center ul li a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        body.dark .nav-center ul li a:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* ===== DROPDOWN MENU STYLES ===== */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .dropdown-toggle::after {
+            content: "▼";
+            font-size: 10px;
+            margin-left: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown.active .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: var(--navbar-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            min-width: 160px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid var(--border-color);
+        }
+
+        .dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+            width: 100%;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            background: transparent;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--primary-color);
+            color: white;
+            padding-left: 20px;
+        }
+
+        body.dark .dropdown-menu a:hover {
+            background: var(--accent-color);
+        }
+
+        /* ===== RIGHT SIDE ELEMENTS ===== */
+        .nav-right a {
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        /* ===== ICON BUTTONS ===== */
+        .icon-btn {
+            border: none;
+            background: transparent;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            min-height: 32px;
+            color: var(--text-color);
+            flex-shrink: 0;
+        }
+
+        .icon-btn:hover {
+            background: var(--nav-bg);
+            transform: translateY(-1px);
+        }
+
+        /* ===== MOBILE MENU BUTTON ===== */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            padding: 6px;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            z-index: 1002;
+            flex-shrink: 0;
+        }
+
+        body.dark .mobile-menu-btn {
+            color: var(--accent-color);
+        }
+
+        /* ===== MOBILE NAV MENU ===== */
+        .mobile-nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            z-index: 1001;
+            transition: right 0.4s ease;
+            padding: 80px 30px 30px;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+            overflow-y: auto;
+        }
+
+        .mobile-nav-menu.active {
+            right: 0;
+        }
+
+        .mobile-nav-menu .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1003;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .mobile-nav-links li {
+            width: 100%;
+        }
+
+        .mobile-nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 14px 20px;
+            border-radius: 10px;
+            display: block;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+        }
+
+        .mobile-nav-links li a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        /* Mobile Dropdown Styles */
+        .mobile-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 14px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            background: transparent;
+            outline: none;
+        }
+
+        .mobile-dropdown-toggle:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        .mobile-dropdown-toggle::after {
+            content: "▼";
+            font-size: 12px;
+            transition: transform 0.3s ease;
+            margin-left: auto;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding-left: 20px;
+            width: 100%;
+            list-style: none;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 500px;
+            padding-top: 10px;
+        }
+
+        .mobile-dropdown-menu li {
+            margin-top: 8px;
+            width: 100%;
+        }
+
+        .mobile-dropdown-menu a {
+            font-size: 15px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        /* ===== OVERLAY ===== */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* ===== SIGN IN BUTTON ===== */
+        .btn-signin {
+            padding: 10px 26px;
+            border: 2px solid #b43239;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+            background-color: var(--primary-color);
+        }
+
+        .btn-signin:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ===== ORIGINAL CONTACT PAGE STYLES (UNCHANGED) ===== */
+        /* ===== HERO SECTION ===== */
+        .hero-banner {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+                        url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            color: white;
+            padding: 40px 20px;
+            margin-top: -84px;
+            padding-top: 84px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* ===== CONTACT FORM SECTION ===== */
+        .contact-main {
+            padding: 80px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .contact-form-section, .contact-info-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        body.dark .contact-form-section, body.dark .contact-info-card {
+            background: #2a2a2a;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: #6b1022;
+            margin-bottom: 1rem;
+        }
+        
+        body.dark .section-title h2 {
+            color: #ff6b93;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-control {
+            padding: 12px 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            background: #f9f9f9;
+            color: inherit;
+        }
+        
+        body.dark .form-control {
+            background: #1a1a1a;
+            border-color: #444;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #6b1022;
+        }
+        
+        body.dark .form-control:focus {
+            border-color: #ff6b93;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-btn {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #6b1022, #8b1a2e);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .form-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* ===== CONTACT INFO ===== */
+        .contact-info-card {
+            background: linear-gradient(135deg, #6b1022, #8b1a2e);
+            color: white;
+            position: sticky;
+            top: 120px;
+        }
+        
+        .contact-info-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .contact-details h4 {
+            margin-bottom: 5px;
+        }
+        
+        .contact-details a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* ===== BRANCHES SECTION ===== */
+        .branches-section {
+            padding: 80px 20px;
+            background: #f9f5f0;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        body.dark .branches-section {
+            background: #1a1a1a;
+        }
+        
+        .branches-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .branch-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        body.dark .branch-card {
+            background: #2a2a2a;
+        }
+        
+        .branch-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .branch-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .branch-content {
+            padding: 20px;
+        }
+        
+        .branch-content h3 {
+            color: #6b1022;
+            margin-bottom: 10px;
+        }
+        
+        body.dark .branch-content h3 {
+            color: #ff6b93;
+        }
+        
+        /* ===== MAP SECTION ===== */
+        .map-section {
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .rounded-lg {
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+
+        /* ===== FOOTER (EXACT COPY FROM ABOUT.HTML) ===== */
+        .footer {
+            background: var(--footer-bg);
+            color: white;
+            padding: 60px 20px 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #f3efe6;
+            width: 100%;
+            transition: color 0.3s ease;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        body.dark .footer-column h3 {
+            color: #fff;
+        }
+
+        .footer-column p {
+            color: var(--footer-text);
+            line-height: 1.8;
+            max-width: 280px;
+            transition: color 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-links li {
+            width: 100%;
+        }
+
+        .footer-links a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 5px 0;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(6px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+.social-links a {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    background: #d4af37; /* gold */
+    color: #2c1810;
+    transform: translateY(-3px);
+}
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--footer-text);
+            font-size: 13px;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+      @media (max-width: 1024px) {
+    .nav-center {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .contact-main { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .contact-info-card { 
+        position: static; 
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+     .nav-right .icon-btn {
+        display: none;
+    }
+
+    /* Show hamburger menu */
+    .mobile-menu-btn {
+        display: flex;
+    }
+}
+
+
+        @media (max-width: 768px) {
+            .hero-content h1 { 
+                font-size: 2.5rem; 
+            }
+            
+            .form-row { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .footer-content { 
+                grid-template-columns: 1fr; 
+                text-align: center;
+            }
+            
+            .footer-column {
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-links {
+                align-items: center;
+            }
+            
+            .branches-grid { 
+                grid-template-columns: 1fr; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { 
+                font-size: 2rem; 
+            }
+            
+            .navbar {
+                padding: 8px 16px;
+            }
+            
+            .contact-form-section, .contact-info-card { 
+                padding: 25px; 
+            }
+            
+            .rounded-lg { 
+                height: 300px; 
+            }
+        }
+
+        /* RTL Support - UPDATED TO MATCH ABOUT.HTML (Logo stays on left) */
+       /* ===== FIX LOGO TEXT DIRECTION (DO NOT REVERSE BRAND NAME) ===== */
+.logo {
+    direction: ltr;          /* Force LTR text */
+    unicode-bidi: isolate;   /* Prevent RTL mirroring */
+}
+
+[dir="rtl"] .logo {
+    direction: ltr;
+    text-align: left;
+}
+
+        
+        [dir="rtl"] .nav-left {
+            /* Keep logo on left in RTL */
+            flex-direction: row;
+            margin-right: 0;
+            margin-left: auto;
+        }
+        
+        [dir="rtl"] .nav-center {
+            /* Keep center menu in center */
+            justify-content: center;
+        }
+        
+        [dir="rtl"] .nav-right {
+            /* Keep nav-right items on right side */
+            flex-direction: row;
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        [dir="rtl"] .nav-center ul {
+            /* Reverse the order of menu items in RTL */
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] .dropdown-menu {
+            left: auto;
+            right: 50%;
+            transform: translateX(50%) translateY(-10px);
+        }
+        
+        [dir="rtl"] .dropdown.active .dropdown-menu {
+            transform: translateX(50%) translateY(5px);
+        }
+        
+        [dir="rtl"] .dropdown-toggle::after {
+            margin-left: 0;
+            margin-right: 4px;
+        }
+        
+        /* RTL adjustments for footer */
+        [dir="rtl"] .footer-column {
+            align-items: flex-end;
+            text-align: right;
+        }
+        
+        [dir="rtl"] .footer-links a:hover {
+            transform: translateX(-6px);
+        }
+
+        /* RTL adjustments for contact page */
+        [dir="rtl"] .breadcrumb {
+            direction: ltr; /* Keep breadcrumb direction LTR even in RTL */
+        }
+        
+        [dir="rtl"] .contact-info-item {
+            text-align: right;
+        }
+        
+        [dir="rtl"] .contact-details {
+            text-align: right;
+        }
+        
+        [dir="rtl"] .branch-content {
+            text-align: right;
+        }
+            /* ===== RESPONSIVE FIX FOR 1180px ===== */
+@media (max-width: 1180px) {
+
+    /* Navbar spacing */
+    .navbar {
+        padding: 8px 18px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    /* Center menu tighter */
+    .nav-center ul {
+        gap: 4px;
+    }
+
+    .nav-center ul li a {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+}
+.mobile-nav-links a.active {
+    background: rgba(255, 255, 255, 0.25);
+   
+    font-weight: 600;
+}
+
+.mobile-actions {
+    display: flex;
+    justify-content: space-between; /* RTL left, Theme right */
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.mobile-actions .icon-btn {
+    flex: 0; /* ✅ IMPORTANT: remove full-width stretch */
+    min-width: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.mobile-actions .icon-btn:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+}
+
+/* ===== TABLET FOOTER LAYOUT (2 x 3) ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        gap: 32px 40px; /* row-gap | column-gap */
+        text-align: left;
+    }
+
+    .footer-column {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .footer-column p {
+        max-width: 100%;
+    }
+
+    .footer-bottom {
+        margin-top: 40px;
+        font-size: 13px;
+    }
+}
+
+
+        
+    </style>
+</head>
+<body>
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Header (Exact Copy from About.html) -->
+    <header class="navbar-wrapper">
+        <nav class="navbar">
+            <!-- Left: Logo - Will stay on left even in RTL -->
+            <div class="nav-left">
+                <a href="index.html" class="logo">Grow<span>Fashion</span></a>
+            </div>
+
+            <!-- Center: Menu -->
+            <div class="nav-center">
+                <ul id="navCenter">
+                    <!-- Home Dropdown -->
+                    <li class="dropdown" id="homeDropdown">
+                        <a href="#" class="dropdown-toggle">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Home 1</a></li>
+                            <li><a href="Home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                   <li><a href="About.html" >About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                     <li><a href="ethnic.html">Ethnic</a></li>
+                    <li><a href="traditional.html">Traditional</a></li>
+                    <li><a href="FAQ.html">FAQs</a></li>
+                    <li><a href="contact.html"class="active">Contact</a></li>
+                    
+                    <!-- Dashboard Dropdown -->
+                    <li class="dropdown" id="dashboardDropdown">
+                        <a href="#" class="dropdown-toggle">Dashboard</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="admin.html">Admin</a></li>
+                            <li><a href="user.html">User</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="register.html">Register</a></li>
+<li>
+    <a href="sighnIn.html" class="btn-signin" style="color: white; text-decoration: none;">Sign In</a>
+</li>                 </ul>
+            </div>
+
+            <!-- Right: Actions -->
+            <div class="nav-right">
+                <!-- Desktop RTL Toggle -->
+                <button class="icon-btn" id="rtlToggle" title="RTL / LTR">↔</button>
+                
+                <!-- Desktop Theme Toggle -->
+                <button class="icon-btn" id="themeToggle" title="Toggle Theme">🌙</button>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-menu" id="mobileNavMenu">
+        <button class="close-btn" id="closeMenuBtn">×</button>
+           <div class="mobile-actions">
+        <button class="icon-btn" id="mobileThemeToggle">
+            🌙 <span>Theme</span>
+        </button>
+
+        <button class="icon-btn" id="mobileRtlToggle">
+            ↔ <span>RTL</span>
+        </button>
+    </div>
+        
+        <ul class="mobile-nav-links">
+            <!-- Mobile Home Dropdown -->
+            <li class="mobile-dropdown" id="mobileHomeDropdown">
+                <a href="#" class="mobile-dropdown-toggle">Home</a>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="Home2.html">Home 2</a></li>
+                </ul>
+            </li>
+             <li><a href="About.html" >About</a></li>
+            <li><a href="service.html">Services</a></li>
+              <li><a href="ethnic.html" >Ethnic</a></li>
+                    <li><a href="traditional.html">Traditional</a></li>
+            <li><a href="FAQ.html">FAQs</a></li>
+            <li><a href="contact.html" class="active">Contact </a></li>
+            
+            
+            <!-- Mobile Dashboard Dropdown -->
+            <li class="mobile-dropdown" id="mobileDashboardDropdown">
+                <a href="#" class="mobile-dropdown-toggle">Dashboard</a>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="user.html">User</a></li>
+                </ul>
+            </li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="sighnIn.html">Sign In</a></li>
+        </ul>
+    </div>
+
+    <!-- ORIGINAL CONTACT PAGE SECTIONS (UNCHANGED) -->
+    <!-- Hero Section -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1>Contact</h1>
+            <p>Get in touch with our team. We're here to help you with any questions or concerns about our fashion collections and services.</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / Contact
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-main">
+        <!-- Contact Form -->
+        <div class="contact-form-section">
+            <div class="section-title">
+                <h2>Get in Touch</h2>
+                <p>Have questions? We'd love to hear from you.</p>
+            </div>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <input type="text" class="form-control" placeholder="First Name" required>
+                    <input type="text" class="form-control" placeholder="Last Name">
+                </div>
+                
+                <div class="form-row">
+                    <input type="email" class="form-control" placeholder="Email Address" required>
+                    <input type="tel" class="form-control" placeholder="Phone Number">
+                </div>
+                
+                <input type="text" class="form-control" placeholder="Subject" required>
+                <textarea class="form-control" placeholder="Your Message" required></textarea>
+                
+                <button type="submit" class="form-btn">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info-card">
+            <h2 class="contact-info-title">Contact Information</h2>
+            
+            <div class="contact-info-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-details">
+                    <h4>Visit Our Store</h4>
+                    <p>123 Fashion Street, Style District</p>
+                    <p>Mumbai, Maharashtra 400001</p>
+                </div>
+            </div>
+            
+            <div class="contact-info-item">
+                <div class="contact-icon">📞</div>
+                <div class="contact-details">
+                    <h4>Call Us</h4>
+                    <p>+91 98765 43210</p>
+                    <p>Mon-Sat: 9:00 AM - 9:00 PM</p>
+                </div>
+            </div>
+            
+            <!-- <div class="contact-info-item">
+                <div class="contact-icon">✉️</div>
+                <div class="contact-details">
+                    <h4>Email Us</h4>
+                    <a href="mailto:info@growfashion.com">info@growfashion.com</a>
+                    <a href="mailto:support@growfashion.com">support@growfashion.com</a>
+                </div>
+            </div> -->
+            
+            <div class="contact-info-item">
+                <div class="contact-icon">🕒</div>
+                <div class="contact-details">
+                    <h4>Business Hours</h4>
+                    <p>Mon-Fri: 9:00 AM - 9:00 PM</p>
+                    <p>Sat-Sun: 10:00 AM - 8:00 PM</p>
+                </div>
+            </div>
+             <div class="contact-info-item">
+                <div class="contact-icon">🕒</div>
+                <div class="contact-details">
+                    <h4>Email Us</h4>
+                    <p><a href="mailto:info@growfashion.com">info@growfashion.com</a>
+                   </p>
+                    <p> <a href="mailto:support@growfashion.com">support@growfashion.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Branches Section -->
+    <section class="branches-section">
+        <div class="branches-title">
+            <h2>Our Branches</h2>
+            <p>Visit any of our fashion stores across major cities</p>
+        </div>
+        
+        <div class="branches-grid">
+            <div class="branch-card">
+                <div class="branch-image">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mumbai Store">
+                </div>
+                <div class="branch-content">
+                    <h3>Mumbai Flagship Store</h3>
+                    <p>Ground Floor, Fashion Plaza, Bandra West</p>
+                    <p>Phone: +91 98765 43211</p>
+                    <p>Timings: 10:00 AM - 10:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="branch-card">
+                <div class="branch-image">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Delhi Store">
+                </div>
+                <div class="branch-content">
+                    <h3>Delhi Fashion Hub</h3>
+                    <p>DLF Promenade, Vasant Kunj</p>
+                    <p>Phone: +91 98765 43212</p>
+                    <p>Timings: 10:00 AM - 9:30 PM</p>
+                </div>
+            </div>
+            
+            <div class="branch-card">
+                <div class="branch-image">
+                    <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Bangalore Store">
+                </div>
+                <div class="branch-content">
+                    <h3>Bangalore Style Center</h3>
+                    <p>UB City, Lavelle Road</p>
+                    <p>Phone: +91 98765 43213</p>
+                    <p>Timings: 10:30 AM - 9:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30596073366!2d-74.25986548248684!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1701234567890!5m2!1sen!2s" 
+                allowfullscreen 
+                loading="lazy" 
+                class="rounded-lg">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Footer (Exact Copy from About.html) -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="nav-left">
+                <a href="index.html" class="logo">Grow<span>Fashion</span></a>
+            </div>
+                <p>Elevating style with sustainable, quality fashion since 2026.</p>
+                <div class="social-links">
+                   <a href="#" aria-label="Facebook">
+    <i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<a href="#" aria-label="Instagram">
+    <i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="#" aria-label="Twitter">
+    <i class="fa-brands fa-twitter"></i>
+</a>
+
+<a href="#" aria-label="Location">
+    <i class="fa-solid fa-location-dot"></i>
+</a>
+
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Shop</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Women's Collection</a></li>
+                    <li><a href="#">Men's Collection</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Shoes</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 GrowFashion User Dashboard. All rights reserved. | <a href="#" style="color: var(--accent-color); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--accent-color); text-decoration: none;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+        }
+        
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // RTL Toggle - UPDATED TO MATCH ABOUT.HTML (Logo stays on left)
+        const rtlToggle = document.getElementById('rtlToggle');
+        
+        function toggleRTL() {
+            const html = document.documentElement;
+            if (html.getAttribute('dir') === 'rtl') {
+                html.setAttribute('dir', 'ltr');
+                rtlToggle.textContent = '↔';
+            } else {
+                html.setAttribute('dir', 'rtl');
+                rtlToggle.textContent = '↔';
+            }
+        }
+        
+        rtlToggle.addEventListener('click', toggleRTL);
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        
+        function openMobileMenu() {
+            mobileNavMenu.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            mobileNavMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Close all mobile dropdowns
+            document.querySelectorAll('.mobile-dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+        
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        closeMenuBtn.addEventListener('click', closeMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+
+        // Dropdown Functionality
+        const homeDropdown = document.getElementById('homeDropdown');
+        const homeDropdownToggle = homeDropdown.querySelector('.dropdown-toggle');
+        
+        const dashboardDropdown = document.getElementById('dashboardDropdown');
+        const dashboardDropdownToggle = dashboardDropdown.querySelector('.dropdown-toggle');
+        
+        // Desktop dropdowns
+        homeDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            homeDropdown.classList.toggle('active');
+            dashboardDropdown.classList.remove('active');
+        });
+        
+        dashboardDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            dashboardDropdown.classList.toggle('active');
+            homeDropdown.classList.remove('active');
+        });
+        
+        // Close desktop dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!homeDropdown.contains(e.target)) {
+                homeDropdown.classList.remove('active');
+            }
+            if (!dashboardDropdown.contains(e.target)) {
+                dashboardDropdown.classList.remove('active');
+            }
+        });
+        
+        // Mobile dropdowns
+        const mobileHomeDropdown = document.getElementById('mobileHomeDropdown');
+        const mobileHomeDropdownToggle = mobileHomeDropdown.querySelector('.mobile-dropdown-toggle');
+        
+        const mobileDashboardDropdown = document.getElementById('mobileDashboardDropdown');
+        const mobileDashboardDropdownToggle = mobileDashboardDropdown.querySelector('.mobile-dropdown-toggle');
+        
+        mobileHomeDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            mobileHomeDropdown.classList.toggle('active');
+            mobileDashboardDropdown.classList.remove('active');
+        });
+        
+        mobileDashboardDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            mobileDashboardDropdown.classList.toggle('active');
+            mobileHomeDropdown.classList.remove('active');
+        });
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.mobile-nav-links > li > a:not(.mobile-dropdown-toggle)').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+        
+        document.querySelectorAll('.mobile-dropdown-menu a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Contact Form (Original Functionality)
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Form validation styling (Original Functionality)
+        const formInputs = document.querySelectorAll('.form-control[required]');
+        formInputs.forEach(input => {
+            input.addEventListener('blur', () => {
+                if (!input.value.trim()) {
+                    input.style.borderColor = '#ff4757';
+                } else {
+                    input.style.borderColor = '';
+                }
+            });
+            
+            input.addEventListener('input', () => {
+                input.style.borderColor = '';
+            });
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileNavMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+            themeToggle.textContent = '☀️';
+        }
+    </script>
+    <script>
+    // Highlight active mobile nav link
+    const currentPage = window.location.pathname.split("/").pop();
+
+    document.querySelectorAll(".mobile-nav-links a").forEach(link => {
+        const linkPage = link.getAttribute("href");
+
+        if (linkPage === currentPage) {
+            link.classList.add("active");
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Grow Fashion</title>
+        <link rel="icon" type="image/jpeg" href="images\growwpark_logo.jpg">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+            
+
+
+    <style>
+        /* ===== GLOBAL RESET & VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background: var(--body-bg);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --nav-bg: #f7f0f0;
+            --text-color: #111;
+            --border-color: #ddd;
+            --navbar-bg: #ffffff;
+            --body-bg: #ffffff;
+            --section-light-bg: #f9f5f0;
+            --section-dark-bg: #1a1a1a;
+            --card-bg: #ffffff;
+            --footer-bg: #2c1810;
+            --footer-text: #d4c5b8;
+            --primary-color: #6b1022;
+            --primary-light: #8b1a2e;
+            --accent-color: #d32f2f; /* Changed to requested color */
+        }
+
+        /* ===== DARK MODE VARIABLES ===== */
+        body.dark {
+            --nav-bg: #1a1a1a;
+            --text-color: #f5f5f5;
+            --border-color: #333;
+            --navbar-bg: #2a2a2a;
+            --body-bg: #121212;
+            --section-light-bg: #1a1a1a;
+            --section-dark-bg: #2a2a2a;
+            --card-bg: #2a2a2a;
+            --footer-bg: #1a1a1a;
+            --footer-text: #b0b0b0;
+        }
+
+        /* ===== NAVBAR WRAPPER (EXACT COPY FROM HOMEPAGE) ===== */
+        .navbar-wrapper {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            padding: 12px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(107, 16, 34, 0.2);
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--navbar-bg);
+            border-radius: 16px;
+            padding: 8px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            position: relative;
+            transition: background-color 0.3s ease;
+            min-height: 60px;
+        }
+
+        /* ===== LOGO ===== */
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            text-decoration: none;
+          color: rgb(235, 24, 123);
+
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        /* .logo span {
+            color: #b0b0b0;
+        } */
+
+        body.dark .logo {
+            color: rgb(235, 24, 123);
+        }
+
+        /* body.dark .logo span {
+            color: #ff8ba7;
+        } */
+
+        /* ===== NAV CONTAINERS ===== */
+        .nav-left {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-right {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* ===== CENTER MENU ===== */
+        .nav-center ul {
+            list-style: none;
+            display: flex;
+            gap: 6px;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-center ul li {
+            position: relative;
+        }
+
+        .nav-center ul li a {
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-color);
+            letter-spacing: 0.3px;
+            padding: 10px 14px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-center ul li a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .nav-center ul li a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        body.dark .nav-center ul li a:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* ===== DROPDOWN MENU STYLES ===== */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .dropdown-toggle::after {
+            content: "▼";
+            font-size: 10px;
+            margin-left: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown.active .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: var(--navbar-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            min-width: 160px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid var(--border-color);
+        }
+
+        .dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+            width: 100%;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            background: transparent;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--primary-color);
+            color: white;
+            padding-left: 20px;
+        }
+
+        body.dark .dropdown-menu a:hover {
+            background: var(--accent-color);
+        }
+
+        /* ===== RIGHT SIDE ELEMENTS ===== */
+        .nav-right a {
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        /* ===== ICON BUTTONS ===== */
+        .icon-btn {
+            border: none;
+            background: transparent;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            min-height: 32px;
+            color: var(--text-color);
+            flex-shrink: 0;
+        }
+
+        .icon-btn:hover {
+            background: var(--nav-bg);
+            transform: translateY(-1px);
+        }
+
+        /* ===== MOBILE MENU BUTTON ===== */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            padding: 6px;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            z-index: 1002;
+            flex-shrink: 0;
+        }
+
+        body.dark .mobile-menu-btn {
+            color: var(--accent-color);
+        }
+
+        /* ===== MOBILE NAV MENU ===== */
+        .mobile-nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            z-index: 1001;
+            transition: right 0.4s ease;
+            padding: 80px 30px 30px;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+            overflow-y: auto;
+        }
+
+        .mobile-nav-menu.active {
+            right: 0;
+        }
+
+        .mobile-nav-menu .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1003;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .mobile-nav-links li {
+            width: 100%;
+        }
+
+        .mobile-nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 14px 20px;
+            border-radius: 10px;
+            display: block;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+        }
+
+        .mobile-nav-links li a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        /* Mobile Dropdown Styles */
+        .mobile-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 14px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            background: transparent;
+            outline: none;
+        }
+
+        .mobile-dropdown-toggle:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        .mobile-dropdown-toggle::after {
+            content: "▼";
+            font-size: 12px;
+            transition: transform 0.3s ease;
+            margin-left: auto;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding-left: 20px;
+            width: 100%;
+            list-style: none;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 500px;
+            padding-top: 10px;
+        }
+
+        .mobile-dropdown-menu li {
+            margin-top: 8px;
+            width: 100%;
+        }
+
+        .mobile-dropdown-menu a {
+            font-size: 15px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        /* ===== OVERLAY ===== */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* ===== SIGN IN BUTTON ===== */
+        .btn-signin {
+            /* padding: 30px 26px; */
+            border: 2px solid #b43239;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+            background-color: var(--primary-color);
+        }
+
+        .btn-signin:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+
+        /* ===== CONTENT STYLES ===== */
+        .page-wrapper {
+            padding-top: 0;
+            margin-top: -20px; /* Removed the gap between navbar and hero banner */
+        }
+
+        /* Section 1: Hero */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+                        url('https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: #f3ebed;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        /* Section 2: Story */
+        .story-section {
+            padding: 80px 20px;
+            background: var(--section-light-bg);
+            transition: background-color 0.3s ease;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        body.dark .section-title h2 {
+            color: var(--accent-color);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .story-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .story-text p {
+            color: var(--text-color);
+            opacity: 0.9;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .story-image img {
+            width: 100%;
+            border-radius: 20px;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Section 3: Stats */
+        .stats-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px 20px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        /* Section 4: Values */
+        .values-section {
+            padding: 80px 20px;
+            background: var(--section-light-bg);
+            transition: background-color 0.3s ease;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        /* Section 5: Team */
+        .team-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .team-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        /* Section 6: Promise */
+        .promise-section {
+            padding: 80px 20px;
+            background: var(--section-light-bg);
+            transition: background-color 0.3s ease;
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+
+        .promise-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .promise-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(211, 47, 47, 0.3);
+        }
+
+        /* ===== FOOTER (EXACT COPY FROM HOMEPAGE) ===== */
+        .footer {
+            background: var(--footer-bg);
+            color: white;
+            padding: 60px 20px 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #f3efe6;
+            width: 100%;
+            transition: color 0.3s ease;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        body.dark .footer-column h3 {
+            color: #fff;
+        }
+
+        .footer-column p {
+            color: var(--footer-text);
+            line-height: 1.8;
+            max-width: 280px;
+            transition: color 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-links li {
+            width: 100%;
+        }
+
+        .footer-links a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 5px 0;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(6px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+      .social-links a {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    background: #d4af37; /* gold */
+    color: #2c1810;
+    transform: translateY(-3px);
+}
+
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--footer-text);
+            font-size: 13px;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+      @media (max-width: 1024px) {
+    .nav-center {
+        display: none;
+    }
+
+    /* HIDE desktop actions */
+    #themeToggle,
+    #rtlToggle {
+        display: none;
+    }
+
+    /* SHOW hamburger */
+    .mobile-menu-btn {
+        display: flex;
+    }
+}
+
+        @media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }}
+        
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .story-grid,
+            .stats-grid,
+            .values-grid,
+            .team-grid,
+            .promise-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column {
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-links {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .navbar {
+                padding: 8px 16px;
+            }
+        }
+
+      /* ===== FIX LOGO TEXT DIRECTION (DO NOT REVERSE BRAND NAME) ===== */
+/* .logo {
+    direction: ltr;         
+    unicode-bidi: isolate;   
+} */
+ 
+
+[dir="rtl"] .logo {
+    direction: ltr;
+    text-align: left;
+}
+
+        
+       [dir="rtl"] .nav-left {
+    flex-direction: row; /* Keep logo on left */
+    margin-left: auto;   /* Change spacing */
+}
+
+        [dir="rtl"] .nav-center {
+            /* Keep center menu in center */
+            justify-content: center;
+        }
+        
+        [dir="rtl"] .nav-right {
+            /* Keep nav-right items on right side */
+            flex-direction: row;
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        [dir="rtl"] .nav-center ul {
+            /* Reverse the order of menu items in RTL */
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] .dropdown-menu {
+            left: auto;
+            right: 50%;
+            transform: translateX(50%) translateY(-10px);
+        }
+        
+        [dir="rtl"] .dropdown.active .dropdown-menu {
+            transform: translateX(50%) translateY(5px);
+        }
+        
+        [dir="rtl"] .dropdown-toggle::after {
+            margin-left: 0;
+            margin-right: 4px;
+        }
+        
+        /* RTL adjustments for footer */
+        [dir="rtl"] .footer-column {
+            align-items: flex-end;
+            text-align: right;
+        }
+        
+        [dir="rtl"] .footer-links a:hover {
+            transform: translateX(-6px);
+        }
+        .mobile-nav-links a.active {
+    background: rgba(255, 255, 255, 0.25);
+    
+    font-weight: 600;
+}
+
+   /* Mobile menu action buttons */
+/* Mobile menu action buttons – FIXED ALIGNMENT */
+.mobile-actions {
+    display: flex;
+    justify-content: space-between; /* RTL left, Theme right */
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.mobile-actions .icon-btn {
+    flex: 0; /* ✅ IMPORTANT: remove full-width stretch */
+    min-width: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.mobile-actions .icon-btn:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+}
+/* ===== TABLET FOOTER LAYOUT (2 x 3) ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        gap: 32px 40px; /* row-gap | column-gap */
+        text-align: left;
+    }
+
+    .footer-column {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .footer-column p {
+        max-width: 100%;
+    }
+
+    .footer-bottom {
+        margin-top: 40px;
+        font-size: 13px;
+    }
+}
+
+     
+    </style>
+</head>
+<body>
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Header (Exact Copy from Homepage) -->
+    <header class="navbar-wrapper">
+        <nav class="navbar">
+            <!-- Left: Logo - Will stay on left even in RTL -->
+            <div class="nav-left">
+                <a href="index.html" class="logo">Grow<span>Fashion</span></a>
+            </div>
+
+            <!-- Center: Menu -->
+            <div class="nav-center">
+                <ul id="navCenter">
+                    <!-- Home Dropdown -->
+                    <li class="dropdown" id="homeDropdown">
+                        <a href="#" class="dropdown-toggle">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Home 1</a></li>
+                            <li><a href="Home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="About.html" class="active">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                     <li><a href="ethnic.html">Ethnic</a></li>
+                    <li><a href="traditional.html">Traditional</a></li>
+                    <li><a href="FAQ.html">FAQs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                   
+                    
+                    <!-- Dashboard Dropdown -->
+                    <li class="dropdown" id="dashboardDropdown">
+                        <a href="#" class="dropdown-toggle">Dashboard</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="admin.html">Admin</a></li>
+                            <li><a href="user.html">User</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="register.html">Register</a></li>
+<li>
+    <a href="sighnIn.html" class="btn-signin" style="color: white; text-decoration: none;">Sign In</a>
+</li>                </ul>
+            </div>
+
+            <!-- Right: Actions -->
+            <div class="nav-right">
+                <!-- Desktop RTL Toggle -->
+                <button class="icon-btn" id="rtlToggle" title="RTL / LTR">↔</button>
+                
+                <!-- Desktop Theme Toggle -->
+                <button class="icon-btn" id="themeToggle" title="Toggle Theme">🌙</button>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-menu" id="mobileNavMenu">
+        <button class="close-btn" id="closeMenuBtn">×</button>
+         <div class="mobile-actions">
+        <button class="icon-btn" id="mobileThemeToggle">
+            🌙 <span>Theme</span>
+        </button>
+
+        <button class="icon-btn" id="mobileRtlToggle">
+            ↔ <span>RTL</span>
+        </button>
+    </div>
+        
+        <ul class="mobile-nav-links">
+            <!-- Mobile Home Dropdown -->
+            <li class="mobile-dropdown" id="mobileHomeDropdown">
+                <a href="#" class="mobile-dropdown-toggle">Home</a>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="Home2.html">Home 2</a></li>
+                </ul>
+            </li>
+            <li><a href="About.html" class="active">About</a></li>
+            <li><a href="service.html">Services</a></li>
+              <li><a href="ethnic.html" >Ethnic</a></li>
+                    <li><a href="traditional.html">Traditional</a></li>
+            <li><a href="FAQ.html">FAQs</a></li>
+            <li><a href="contact.html">Contact </a></li>
+            
+            
+            <!-- Mobile Dashboard Dropdown -->
+            <li class="mobile-dropdown" id="mobileDashboardDropdown">
+                <a href="#" class="mobile-dropdown-toggle">Dashboard</a>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="user.html">User</a></li>
+                </ul>
+            </li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="sighnIn.html">Sign In</a></li>
+        </ul>
+        
+    </div>
+
+    <!-- Main Content -->
+    <div class="page-wrapper">
+        <!-- Section 1: Hero -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <span class="hero-tag">SINCE 2026</span>
+                <h1>Our Story & Vision</h1>
+                <p>
+                    Celebrating tradition, empowering artisans, and redefining fashion since 2026. 
+                    Join us on a journey where culture meets contemporary style.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 2: Story -->
+        <section class="story-section">
+            <div class="section-container">
+                <div class="section-title">
+                    <span class="section-badge">★ Our Story</span>
+                    <h2>Our Humble Beginnings</h2>
+                    <p>Founded in 2026, GrowFashion started as a small boutique with a big vision</p>
+                </div>
+                <div class="story-grid">
+                    <div class="story-text">
+                        <h3>Bridging Tradition & Fashion</h3>
+                        <p>We believe fashion should tell a story—a story of culture, craftsmanship, and connection. Every piece carries centuries of tradition.</p>
+                        <p>What began as a passion project has blossomed into a global movement connecting skilled artisans with fashion enthusiasts worldwide.</p>
+                    </div>
+                    <div class="story-image">
+                        <img src="https://images.unsplash.com/photo-1520004434532-668416a08753?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Our Story">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Stats -->
+        <section class="stats-section">
+            <div class="section-container">
+                <div class="section-title">
+                    <span class="section-badge">★ Mission & Impact</span>
+                    <h2>Preserving Craftsmanship</h2>
+                    <p>Creating sustainable livelihoods for artisans worldwide</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">500+</div>
+                        <div>Artisans Empowered</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12</div>
+                        <div>Countries Reached</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50K+</div>
+                        <div>Happy Customers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8</div>
+                        <div>Years of Excellence</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">15</div>
+                        <div>Traditional Crafts</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div>Ethically Sourced</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Values -->
+        <section class="values-section">
+            <div class="section-container">
+                <div class="section-title">
+                    <span class="section-badge">★ Core Values</span>
+                    <h2>What Guides Us</h2>
+                    <p>Principles that define everything we do</p>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🌿</div>
+                        <h3>Sustainability</h3>
+                        <p>Eco-friendly materials with minimal environmental impact</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">⚖️</div>
+                        <h3>Ethical Production</h3>
+                        <p>Fair wages and safe conditions for every artisan</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">     <i class="fa-solid fa-magic emb-icon" title="Creative Stitch" style="color: #d4af37;"></i>
+
+
+</div>
+                        <h3>Artisan Empowerment</h3>
+                        <p>Training and global markets for traditional crafts</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">❤️</div>
+                        <h3>Quality Craftsmanship</h3>
+                        <p>Traditional techniques meeting modern excellence</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌍</div>
+                        <h3>Cultural Preservation</h3>
+                        <p>Documenting techniques for future generations</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Community Building</h3>
+                        <p>Connecting artisans, designers, and customers</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Team -->
+        <section class="team-section">
+            <div class="section-container">
+                <div class="section-title">
+                    <span class="section-badge">★ Leadership</span>
+                    <h2>Meet Our Team</h2>
+                    <p>The passionate individuals behind GrowFashion</p>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Priya Sharma">
+                        <div class="team-info">
+                            <h3>Priya Sharma</h3>
+                            <p>Founder & CEO</p>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 10px;">Founded GrowFashion to bridge heritage crafts with modern fashion</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Raj Patel">
+                        <div class="team-info">
+                            <h3>Raj Patel</h3>
+                            <p>Creative Director</p>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 10px;">Brings contemporary sensibilities to age-old techniques</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="images\cute-dp-girl-golden-hour-smile-garden.jpg" alt="Ananya Singh">
+                        <div class="team-info">
+                            <h3>Ananya Singh</h3>
+                            <p>Artisan Relations</p>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 10px;">Connects with master artisans across rural India</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Arjun Mehta">
+                        <div class="team-info">
+                            <h3>Arjun Mehta</h3>
+                            <p>Sustainability Officer</p>
+                            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 10px;">Ensures eco-friendly practices throughout supply chain</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Promise -->
+        <section class="promise-section">
+            <div class="section-container">
+                <div class="section-title">
+                    <span class="section-badge">★ Our Promise</span>
+                    <h2>Our Commitment to You</h2>
+                    <p>Join a movement valuing craftsmanship, culture, and conscious consumption</p>
+                </div>
+                <div class="promise-grid">
+                    <div class="promise-card">
+                        <h3>Authenticity Guarantee</h3>
+                        <p>Documentation of origin and artisan information with every piece</p>
+                    </div>
+                    <div class="promise-card">
+                        <h3>Lifetime Support</h3>
+                        <p>Repair and maintenance services for all traditional wear</p>
+                    </div>
+                    <div class="promise-card">
+                        <h3>Transparent Pricing</h3>
+                        <p>Know exactly how your purchase supports artisans</p>
+                    </div>
+                    <div class="promise-card">
+                        <h3>Craft Education</h3>
+                        <p>Learn about traditional crafts and cultural significance</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <button class="cta-button" onclick="openContact()">Join Our Community</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer (Exact Copy from Homepage) -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="nav-left">
+                <a href="index.html" class="logo">Grow<span>Fashion</span></a>
+            </div>
+
+                <p>Elevating style with sustainable, quality fashion since 2026.</p>
+                <div class="social-links">
+                   <a href="#" aria-label="Facebook">
+    <i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<a href="#" aria-label="Instagram">
+    <i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="#" aria-label="Twitter">
+    <i class="fa-brands fa-twitter"></i>
+</a>
+
+<a href="#" aria-label="Location">
+    <i class="fa-solid fa-location-dot"></i>
+</a>
+
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Shop</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Women's Collection</a></li>
+                    <li><a href="#">Men's Collection</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Shoes</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Contact </a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 GrowFashion User Dashboard. All rights reserved. | <a href="#" style="color: var(--accent-color); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--accent-color); text-decoration: none;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            if (mobileThemeToggle) {
+                mobileThemeToggle.textContent = isDark ? '☀️ Theme' : '🌙 Theme';
+            }
+        }
+        
+        themeToggle.addEventListener('click', toggleTheme);
+        if (mobileThemeToggle) {
+            mobileThemeToggle.addEventListener('click', toggleTheme);
+        }
+
+        // RTL Toggle - UPDATED TO KEEP LOGO ON LEFT
+        const rtlToggle = document.getElementById('rtlToggle');
+        const mobileRtlToggle = document.getElementById('mobileRtlToggle');
+        
+        function toggleRTL() {
+            const html = document.documentElement;
+            if (html.getAttribute('dir') === 'rtl') {
+                html.setAttribute('dir', 'ltr');
+                rtlToggle.textContent = '↔';
+                if (mobileRtlToggle) {
+                    mobileRtlToggle.textContent = '↔ RTL/LTR';
+                }
+            } else {
+                html.setAttribute('dir', 'rtl');
+                rtlToggle.textContent = '↔';
+                if (mobileRtlToggle) {
+                    mobileRtlToggle.textContent = '↔ RTL/LTR';
+                }
+            }
+        }
+        
+        rtlToggle.addEventListener('click', toggleRTL);
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        
+        function openMobileMenu() {
+            mobileNavMenu.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            mobileNavMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Close all mobile dropdowns
+            document.querySelectorAll('.mobile-dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+        
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        closeMenuBtn.addEventListener('click', closeMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+
+        // Dropdown Functionality
+        const homeDropdown = document.getElementById('homeDropdown');
+        const homeDropdownToggle = homeDropdown.querySelector('.dropdown-toggle');
+        
+        const dashboardDropdown = document.getElementById('dashboardDropdown');
+        const dashboardDropdownToggle = dashboardDropdown.querySelector('.dropdown-toggle');
+        
+        // Desktop dropdowns
+        homeDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            homeDropdown.classList.toggle('active');
+            dashboardDropdown.classList.remove('active');
+        });
+        
+        dashboardDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            dashboardDropdown.classList.toggle('active');
+            homeDropdown.classList.remove('active');
+        });
+        
+        // Close desktop dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!homeDropdown.contains(e.target)) {
+                homeDropdown.classList.remove('active');
+            }
+            if (!dashboardDropdown.contains(e.target)) {
+                dashboardDropdown.classList.remove('active');
+            }
+        });
+        
+        // Mobile dropdowns
+        const mobileHomeDropdown = document.getElementById('mobileHomeDropdown');
+        const mobileHomeDropdownToggle = mobileHomeDropdown.querySelector('.mobile-dropdown-toggle');
+        
+        const mobileDashboardDropdown = document.getElementById('mobileDashboardDropdown');
+        const mobileDashboardDropdownToggle = mobileDashboardDropdown.querySelector('.mobile-dropdown-toggle');
+        
+        mobileHomeDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            mobileHomeDropdown.classList.toggle('active');
+            mobileDashboardDropdown.classList.remove('active');
+        });
+        
+        mobileDashboardDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            mobileDashboardDropdown.classList.toggle('active');
+            mobileHomeDropdown.classList.remove('active');
+        });
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.mobile-nav-links > li > a:not(.mobile-dropdown-toggle)').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+        
+        document.querySelectorAll('.mobile-dropdown-menu a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Simple animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        // Animate cards on scroll
+        document.querySelectorAll('.value-card, .team-card, .stat-card, .promise-card').forEach((el) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Placeholder function
+        function openContact() { 
+            alert('Contact form will open here. In a real implementation, this would link to your contact page.'); 
+        }
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileNavMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+            themeToggle.textContent = '☀️';
+        }
+    </script>
+    <script>
+        
+    // Highlight active mobile nav link
+    const currentPage = window.location.pathname.split("/").pop();
+
+    document.querySelectorAll(".mobile-nav-links a").forEach(link => {
+        const linkPage = link.getAttribute("href");
+
+        if (linkPage === currentPage) {
+            link.classList.add("active");
+        }
+    });
+
+
+    </script>
+</body>
+</html>

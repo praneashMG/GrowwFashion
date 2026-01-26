@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embroidery & Handwork Services - GrowFashion</title>
+        <link rel="icon" type="image/jpeg" href="images\growwpark_logo.jpg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+        /* ===== GLOBAL RESET & VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background: var(--body-bg);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --nav-bg: #f7f0f0;
+            --text-color: #111;
+            --border-color: #ddd;
+            --navbar-bg: #ffffff;
+            --body-bg: #ffffff;
+            --section-light-bg: #f9f5f0;
+            --section-dark-bg: #1a1a1a;
+            --card-bg: #ffffff;
+            --footer-bg: #2c1810;
+            --footer-text: #d4c5b8;
+            --primary-color: #6b1022;
+            --primary-light: #8b1a2e;
+            --accent-color: #d32f2f;
+        }
+
+        /* ===== DARK MODE VARIABLES ===== */
+        body.dark {
+            --nav-bg: #1a1a1a;
+            --text-color: #f5f5f5;
+            --border-color: #333;
+            --navbar-bg: #2a2a2a;
+            --body-bg: #121212;
+            --section-light-bg: #1a1a1a;
+            --section-dark-bg: #2a2a2a;
+            --card-bg: #2a2a2a;
+            --footer-bg: #1a1a1a;
+            --footer-text: #b0b0b0;
+        }
+
+        /* ===== NAVBAR WRAPPER (EXACT COPY FROM ABOUT.HTML) ===== */
+        .navbar-wrapper {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            padding: 12px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(107, 16, 34, 0.2);
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--navbar-bg);
+            border-radius: 16px;
+            padding: 8px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            position: relative;
+            transition: background-color 0.3s ease;
+            min-height: 60px;
+        }
+
+        /* ===== LOGO ===== */
+       .logo {
+            font-size: 26px;
+            font-weight: 800;
+            text-decoration: none;
+          color: rgb(235, 24, 123);
+
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        /* .logo span {
+            color: #b0b0b0;
+        } */
+
+        body.dark .logo {
+            color: rgb(235, 24, 123);
+        }
+
+        /* body.dark .logo span {
+            color: #ff8ba7;
+        } */
+        /* ===== NAV CONTAINERS ===== */
+        .nav-left {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-right {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* ===== CENTER MENU ===== */
+        .nav-center ul {
+            list-style: none;
+            display: flex;
+            gap: 6px;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-center ul li {
+            position: relative;
+        }
+
+        .nav-center ul li a {
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-color);
+            letter-spacing: 0.3px;
+            padding: 10px 14px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-center ul li a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .nav-center ul li a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        body.dark .nav-center ul li a:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* ===== DROPDOWN MENU STYLES ===== */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .dropdown-toggle::after {
+            content: "▼";
+            font-size: 10px;
+            margin-left: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown.active .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: var(--navbar-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            min-width: 160px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid var(--border-color);
+        }
+
+        .dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+            width: 100%;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            background: transparent;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--primary-color);
+            color: white;
+            padding-left: 20px;
+        }
+
+        body.dark .dropdown-menu a:hover {
+            background: var(--accent-color);
+        }
+
+        /* ===== RIGHT SIDE ELEMENTS ===== */
+        .nav-right a {
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        /* ===== ICON BUTTONS ===== */
+        .icon-btn {
+            border: none;
+            background: transparent;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            min-height: 32px;
+            color: var(--text-color);
+            flex-shrink: 0;
+        }
+
+        .icon-btn:hover {
+            background: var(--nav-bg);
+            transform: translateY(-1px);
+        }
+
+        /* ===== MOBILE MENU BUTTON ===== */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            padding: 6px;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            z-index: 1002;
+            flex-shrink: 0;
+        }
+
+        body.dark .mobile-menu-btn {
+            color: var(--accent-color);
+        }
+
+        /* ===== MOBILE NAV MENU ===== */
+        .mobile-nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            z-index: 1001;
+            transition: right 0.4s ease;
+            padding: 80px 30px 30px;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+            overflow-y: auto;
+        }
+
+        .mobile-nav-menu.active {
+            right: 0;
+        }
+
+        .mobile-nav-menu .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1003;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .mobile-nav-links li {
+            width: 100%;
+        }
+
+        .mobile-nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 14px 20px;
+            border-radius: 10px;
+            display: block;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+        }
+
+        .mobile-nav-links li a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        /* Mobile Dropdown Styles */
+        .mobile-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 14px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            background: transparent;
+            outline: none;
+        }
+
+        .mobile-dropdown-toggle:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        .mobile-dropdown-toggle::after {
+            content: "▼";
+            font-size: 12px;
+            transition: transform 0.3s ease;
+            margin-left: auto;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding-left: 20px;
+            width: 100%;
+            list-style: none;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 500px;
+            padding-top: 10px;
+        }
+
+        .mobile-dropdown-menu li {
+            margin-top: 8px;
+            width: 100%;
+        }
+
+        .mobile-dropdown-menu a {
+            font-size: 15px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        /* ===== OVERLAY ===== */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* ===== SIGN IN BUTTON ===== */
+        .btn-signin {
+            padding: 10px 26px;
+            border: 2px solid #b43239;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+            background-color: var(--primary-color);
+        }
+
+        .btn-signin:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ===== SERVICE DETAIL HERO ===== */
+        .service-hero {
+                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+                        url('images/img_1.jpg');  
+                          background-size: cover;
+            background-position: center;
+            min-width: none;
+          height: 700px;     
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .service-hero h1 {
+            margin-top: 100px;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        /* body.dark .service-hero h1 {
+            margin-top: 60px;
+            color: white;
+        } */
+
+        .service-hero p {
+            font-size: 1rem;
+            color: white;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        /* .service-tag {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            margin-top: -50px;
+        } */
+
+        /* ===== SERVICE DETAIL CONTAINER ===== */
+        .service-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+        }
+
+        @media (max-width: 1024px) {
+            .service-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== SERVICE CONTENT ===== */
+        .service-content {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .service-image-main {
+            width: 100%;
+            height: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .service-image-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-image-main:hover img {
+            transform: scale(1.03);
+        }
+
+        .service-section {
+            margin-bottom: 40px;
+        }
+
+        .service-section h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        body.dark .service-section h2 {
+            color: var(--accent-color);
+        }
+
+        .service-section p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            opacity: 0.95;
+        }
+
+        /* ===== FEATURES LIST ===== */
+        .features-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .features-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        body.dark .features-list li:before {
+            color: var(--accent-color);
+        }
+
+        /* ===== SIDEBAR ===== */
+        .service-sidebar {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .service-info-box {
+            margin-bottom: 30px;
+        }
+
+        .service-info-box h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        body.dark .service-info-box h3 {
+            color: var(--accent-color);
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .info-value {
+            color: var(--primary-color);
+        }
+
+        body.dark .info-value {
+            color: var(--accent-color);
+        }
+
+        /* ===== CTA BUTTONS ===== */
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(139, 26, 46, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 14px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        body.dark .btn-secondary {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(107, 16, 34, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* ===== RELATED SERVICES ===== */
+        .related-services {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .related-services h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        body.dark .related-services h2 {
+            color: var(--accent-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(107, 16, 34, 0.1);
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(107, 16, 34, 0.15);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .service-card-content {
+            padding: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        body.dark .service-card h3 {
+            color: var(--accent-color);
+        }
+
+        .service-card p {
+            color: var(--text-color);
+            opacity: 0.9;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .service-card-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        body.dark .service-card-link {
+            color: var(--accent-color);
+        }
+
+        /* ===== FOOTER (EXACT COPY FROM ABOUT.HTML) ===== */
+        .footer {
+            background: var(--footer-bg);
+            color: white;
+            padding: 60px 20px 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #f3efe6;
+            width: 100%;
+            transition: color 0.3s ease;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        body.dark .footer-column h3 {
+            color: #fff;
+        }
+
+        .footer-column p {
+            color: var(--footer-text);
+            line-height: 1.8;
+            max-width: 280px;
+            transition: color 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-links li {
+            width: 100%;
+        }
+
+        .footer-links a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 5px 0;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(6px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+       .social-links a {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    background: #d4af37; /* gold */
+    color: #2c1810;
+    transform: translateY(-3px);
+}
+
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--footer-text);
+            font-size: 13px;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .nav-center {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .service-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .service-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .nav-right .icon-btn {
+        display: none;
+    }
+
+    /* Show hamburger menu */
+    .mobile-menu-btn {
+        display: flex;
+    }
+        }
+
+        @media (max-width: 768px) {
+            .service-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .service-hero p {
+                font-size: 1rem;
+            }
+            
+            .service-content {
+                padding: 25px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column {
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-links {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .navbar {
+                padding: 8px 16px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+        }
+
+        /* RTL Support - UPDATED TO KEEP LOGO ON LEFT */
+       /* ===== FIX LOGO TEXT DIRECTION (DO NOT REVERSE BRAND NAME) ===== */
+.logo {
+    direction: ltr;          /* Force LTR text */
+    unicode-bidi: isolate;   /* Prevent RTL mirroring */
+}
+
+[dir="rtl"] .logo {
+    direction: ltr;
+    text-align: left;
+}
+
+        
+        [dir="rtl"] .nav-left {
+            flex-direction: row;
+            margin-right: 0;
+            margin-left: auto;
+        }
+        
+        [dir="rtl"] .nav-center {
+            justify-content: center;
+        }
+        
+        [dir="rtl"] .nav-right {
+            flex-direction: row;
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        [dir="rtl"] .nav-center ul {
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] .dropdown-menu {
+            left: auto;
+            right: 50%;
+            transform: translateX(50%) translateY(-10px);
+        }
+        
+        [dir="rtl"] .dropdown.active .dropdown-menu {
+            transform: translateX(50%) translateY(5px);
+        }
+        
+        [dir="rtl"] .dropdown-toggle::after {
+            margin-left: 0;
+            margin-right: 4px;
+        }
+        
+        /* RTL adjustments for footer */
+        [dir="rtl"] .footer-column {
+            align-items: flex-end;
+            text-align: right;
+        }
+        
+        [dir="rtl"] .footer-links a:hover {
+            transform: translateX(-6px);
+        }
+        @media (max-width: 1180px) {
+
+    /* Navbar spacing */
+    .navbar {
+        padding: 8px 18px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    /* Center menu tighter */
+    .nav-center ul {
+        gap: 4px;
+    }
+
+    .nav-center ul li a {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+}
+     .mobile-nav-links a.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-left: 4px solid #ffd700;
+    font-weight: 600;
+}
+.mobile-nav-links a.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-left: 4px solid #ffd700;
+    font-weight: 600;
+}
+
+  .mobile-nav-links a.active {
+    background: rgba(255, 255, 255, 0.25);
+   
+    font-weight: 600;
+}
+.mobile-nav-links a.active {
+    background: rgba(255, 255, 255, 0.25);
+    
+    font-weight: 600;
+}
+.mobile-actions {
+    display: flex;
+    justify-content: space-between; /* RTL left, Theme right */
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.mobile-actions .icon-btn {
+    flex: 0; /* ✅ IMPORTANT: remove full-width stretch */
+    min-width: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.mobile-actions .icon-btn:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+}
+
+/* ===== TABLET FOOTER LAYOUT (2 x 3) ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        gap: 32px 40px; /* row-gap | column-gap */
+        text-align: left;
+    }
+
+    .footer-column {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .footer-column p {
+        max-width: 100%;
+    }
+
+    .footer-bottom {
+        margin-top: 40px;
+        font-size: 13px;
+    }
+}
+
+ 
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Header (Exact Copy from About.html) -->
+    <header class="navbar-wrapper">
+        <nav class="navbar">
+            <!-- Left: Logo - Will stay on left even in RTL -->
+            <div class="nav-left">
+                <a href="index.html" class="logo">Grow<span>Fashion</span></a>
+            </div>
+
+            <!-- Center: Menu -->
+            <div class="nav-center">
+                <ul id="navCenter">
+                    <!-- Home Dropdown -->
+                    <li class="dropdown" id="homeDropdown">
+                        <a href="#" class="dropdown-toggle">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Home 1</a></li>
+                            <li><a href="Home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                  <li><a href="About.html" >About</a></li>
+            <li><a href="service.html" class="active">Services</a></li>
+              <li><a href="ethnic.html" >Ethnic</a></li>
+                    <li><a href="traditional.html">Traditional</a></li>
+            <li><a href="FAQ.html">FAQs</a></li>
+            <li><a href="contact.html" >Contact </a></li>
+                    
+                    <!-- Dashboard Dropdown -->
+                    <li class="dropdown" id="dashboardDropdown">
+                        <a href="#" class="dropdown-toggle">Dashboard</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="admin.html">Admin</a></li>
+                            <li><a href="user.html">User</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="register.html">Register</a></li>
+<li>
+    <a href="sighnIn.html" class="btn-signin" style="color: white; text-decoration: none;">Sign In</a>
+</li>                 </ul>
+            </div>
+
+            <!-- Right: Actions -->
+            <div class="nav-right">
+                <!-- Desktop RTL Toggle -->
+                <button class="icon-btn" id="rtlToggle" title="RTL / LTR">↔</button>
+                
+                <!-- Desktop Theme Toggle -->
+                <button class="icon-btn" id="themeToggle" title="Toggle Theme">🌙</button>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-menu" id="mobileNavMenu">
+        <button class="close-btn" id="closeMenuBtn">×</button>
+          <div class="mobile-actions">
+        <button class="icon-btn" id="mobileThemeToggle">
+            🌙 <span>Theme</span>
+        </button>
+
+        <button class="icon-btn" id="mobileRtlToggle">
+            ↔ <span>RTL</span>
+        </button>
+    </div>
+        
+        <ul class="mobile-nav-links">
+            <!-- Mobile Home Dropdown -->
+            <li class="mobile-dropdown" id="mobileHomeDropdown">
+                <a href="#" class="mobile-dropdown-toggle">Home</a>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="Home2.html">Home 2</a></li>
+                </ul>
+            </li>
+             <li><a href="About.html" >About</a></li>
+            <li><a href="service.html" class="active">Services</a></li>
+              <li><a href="ethnic.html" >Ethnic</a></li>
+                    <li><a href="traditional.html">Traditional</a></li>
+            <li><a href="FAQ.html">FAQs</a></li>
+            <li><a href="contact.html">Contact </a></li>
+            
+            <!-- Mobile Dashboard Dropdown -->
+            <li class="mobile-dropdown" id="mobileDashboardDropdown">
+                <a href="#" class="mobile-dropdown-toggle">Dashboard</a>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="user.html">User</a></li>
+                </ul>
+            </li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="sighnIn.html">Sign In</a></li>
+        </ul>
+    </div>
+
+    <!-- Service Hero -->
+    <section class="service-hero">
+      
+        <h1>Embroidery & Handwork Services</h1>
+        <p>Our skilled artisans bring garments to life with detailed hand embroidery, traditional motifs, and intricate finishing techniques that celebrate centuries of craftsmanship.</p>
+    </section>
+
+    <!-- Service Detail Container -->
+    <div class="service-container">
+        <!-- Main Content -->
+        <div class="service-content">
+            <div class="service-image-main">
+                <img src="images/img_1.jpg" alt="Embroidery Artisan at Work">
+            </div>
+            
+            <div class="service-section">
+                <h2>About Our Embroidery Services</h2>
+                <p>At GrowFashion, we preserve the art of traditional embroidery by combining age-old techniques with contemporary designs. Each piece is meticulously crafted by our master artisans who have honed their skills over decades.</p>
+                <p>Our embroidery services transform ordinary garments into extraordinary works of art, perfect for weddings, festivals, and special occasions where tradition meets modern elegance.</p>
+            </div>
+            
+            <div class="service-section">
+                <h2>Techniques We Specialize In</h2>
+                <ul class="features-list">
+                    <li><strong>Zardozi Embroidery:</strong> Gold and silver thread work with precious stones and pearls</li>
+                    <li><strong>Kashmiri Crewel:</strong> Wool embroidery on fabric with intricate floral patterns</li>
+                    <li><strong>Chikankari:</strong> Delicate white thread embroidery on fine muslin and cotton</li>
+                    <li><strong>Phulkari:</strong> Vibrant floral embroidery from Punjab using silk threads</li>
+                    <li><strong>Kantha Stitch:</strong> Running stitch embroidery from West Bengal with narrative motifs</li>
+                    <li><strong>Mirror Work:</strong> Traditional embroidery incorporating small mirrors for reflective beauty</li>
+                    <li><strong>Sequins & Beadwork:</strong> Intricate embellishment with sequins, beads, and crystals</li>
+                </ul>
+            </div>
+            
+            <div class="service-section">
+                <h2>The Embroidery Process</h2>
+                <p>Every embroidered garment goes through a meticulous process:</p>
+                <p><strong>1. Design Consultation:</strong> We work with you to create or select patterns that reflect your personal style and the occasion.</p>
+                <p><strong>2. Fabric Selection:</strong> Choosing the right base fabric that complements the embroidery technique.</p>
+                <p><strong>3. Pattern Tracing:</strong> Master artisans trace the design onto the fabric using traditional methods.</p>
+                <p><strong>4. Hand Embroidery:</strong> Each stitch is carefully placed by skilled hands, ensuring precision and beauty.</p>
+                <p><strong>5. Quality Check:</strong> Multiple quality inspections throughout the process to ensure perfection.</p>
+                <p><strong>6. Finishing:</strong> Final touches including cleaning, pressing, and packaging.</p>
+            </div>
+            
+            <div class="service-section">
+                <h2>Customization Options</h2>
+                <p>We offer complete customization for your embroidery needs:</p>
+                <ul class="features-list">
+                    <li>Personalized motifs and monograms</li>
+                    <li>Color matching to your specific requirements</li>
+                    <li>Mix of traditional and contemporary patterns</li>
+                    <li>Choice of thread types (silk, cotton, metallic, wool)</li>
+                    <li>Various density options from minimal to fully covered embroidery</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="service-sidebar">
+            <div class="service-info-box">
+                <h3>Service Details</h3>
+                <div class="info-item">
+                    <span class="info-label">Service Type:</span>
+                    <span class="info-value">Hand Embroidery</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Turnaround Time:</span>
+                    <span class="info-value">2-6 Weeks</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Starting Price:</span>
+                    <span class="info-value">$150+</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Artisans:</span>
+                    <span class="info-value">Master Craftsmen</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Quality Guarantee:</span>
+                    <span class="info-value">100% Satisfaction</span>
+                </div>
+            </div>
+            
+            <div class="service-info-box">
+                <h3>Perfect For</h3>
+                <ul class="features-list" style="border: none;">
+                    <li>Bridal Wear</li>
+                    <li>Festival Outfits</li>
+                    <li>Special Occasions</li>
+                    <li>Traditional Ceremonies</li>
+                    <li>Heritage Collections</li>
+                </ul>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn-primary">
+                    <i class="fas fa-calendar-alt"></i> Book Consultation
+                </a>
+                <a href="tel:+11234567890" class="btn-secondary">
+                    <i class="fas fa-phone"></i> Call for Inquiry
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Related Services -->
+    <div class="related-services">
+        <h2>Other Premium Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Bridal Wear Services">
+                <div class="service-card-content">
+                    <h3>Bridal Wear Services</h3>
+                    <p>We specialize in creating exclusive bridal outfits that blend .</p>
+                    <a href="#" class="service-card-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="images\Jenifar-Stormy-1.webp" alt="Premium Fabric Selection">
+                <div class="service-card-content">
+                    <h3>Premium Fabric Selection</h3>
+                    <p>We source high-quality fabrics from trusted weavers and artisans, ensuring authenticity and durability.</p>
+                    <a href="#" class="service-card-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tailoring Services">
+                <div class="service-card-content">
+                    <h3>Bespoke Tailoring Services</h3>
+                    <p>We offer personalized tailoring services designed to give you the perfect fit and timeless style.</p>
+                    <a href="#" class="service-card-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Exact Copy from About.html) -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="nav-left">
+                <a href="index.html" class="logo">Grow<span>Fashion</span></a>
+            </div>
+                <p>Elevating style with sustainable, quality fashion since 2026.</p>
+                <div class="social-links">
+                   <a href="#" aria-label="Facebook">
+    <i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<a href="#" aria-label="Instagram">
+    <i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="#" aria-label="Twitter">
+    <i class="fa-brands fa-twitter"></i>
+</a>
+
+<a href="#" aria-label="Location">
+    <i class="fa-solid fa-location-dot"></i>
+</a>
+
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Shop</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Women's Collection</a></li>
+                    <li><a href="#">Men's Collection</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Shoes</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 GrowFashion User Dashboard. All rights reserved. | <a href="#" style="color: var(--accent-color); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--accent-color); text-decoration: none;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+        
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // RTL Toggle - UPDATED TO KEEP LOGO ON LEFT
+        const rtlToggle = document.getElementById('rtlToggle');
+        
+        function toggleRTL() {
+            const html = document.documentElement;
+            if (html.getAttribute('dir') === 'rtl') {
+                html.setAttribute('dir', 'ltr');
+                rtlToggle.textContent = '↔';
+            } else {
+                html.setAttribute('dir', 'rtl');
+                rtlToggle.textContent = '↔';
+            }
+        }
+        
+        rtlToggle.addEventListener('click', toggleRTL);
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        
+        function openMobileMenu() {
+            mobileNavMenu.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            mobileNavMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Close all mobile dropdowns
+            document.querySelectorAll('.mobile-dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+        
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        closeMenuBtn.addEventListener('click', closeMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+
+        // Dropdown Functionality
+        const homeDropdown = document.getElementById('homeDropdown');
+        const homeDropdownToggle = homeDropdown.querySelector('.dropdown-toggle');
+        
+        const dashboardDropdown = document.getElementById('dashboardDropdown');
+        const dashboardDropdownToggle = dashboardDropdown.querySelector('.dropdown-toggle');
+        
+        // Desktop dropdowns
+        homeDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            homeDropdown.classList.toggle('active');
+            dashboardDropdown.classList.remove('active');
+        });
+        
+        dashboardDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            dashboardDropdown.classList.toggle('active');
+            homeDropdown.classList.remove('active');
+        });
+        
+        // Close desktop dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!homeDropdown.contains(e.target)) {
+                homeDropdown.classList.remove('active');
+            }
+            if (!dashboardDropdown.contains(e.target)) {
+                dashboardDropdown.classList.remove('active');
+            }
+        });
+        
+        // Mobile dropdowns
+        const mobileHomeDropdown = document.getElementById('mobileHomeDropdown');
+        const mobileHomeDropdownToggle = mobileHomeDropdown.querySelector('.mobile-dropdown-toggle');
+        
+        const mobileDashboardDropdown = document.getElementById('mobileDashboardDropdown');
+        const mobileDashboardDropdownToggle = mobileDashboardDropdown.querySelector('.mobile-dropdown-toggle');
+        
+        mobileHomeDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            mobileHomeDropdown.classList.toggle('active');
+            mobileDashboardDropdown.classList.remove('active');
+        });
+        
+        mobileDashboardDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            mobileDashboardDropdown.classList.toggle('active');
+            mobileHomeDropdown.classList.remove('active');
+        });
+
+        // Close menu when clicking on links
+        document.querySelectorAll('.mobile-nav-links > li > a:not(.mobile-dropdown-toggle)').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+        
+        document.querySelectorAll('.mobile-dropdown-menu a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Simple animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        // Animate service sections on scroll
+        document.querySelectorAll('.service-section, .service-info-box, .service-card').forEach((el) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileNavMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Load saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+            themeToggle.textContent = '☀️';
+        }
+    </script>
+    <script>
+    // Highlight active mobile nav link
+    const currentPage = window.location.pathname.split("/").pop();
+
+    document.querySelectorAll(".mobile-nav-links a").forEach(link => {
+        const linkPage = link.getAttribute("href");
+
+        if (linkPage === currentPage) {
+            link.classList.add("active");
+        }
+    });
+</script>
+
+</body>
+</html>

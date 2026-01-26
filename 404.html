@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap">
+            <link rel="icon" type="image/jpeg" href="images\growwpark_logo.jpg">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #151515;
+            color: #e1e2e2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .error-code {
+            font-size: 12rem;
+            font-weight: 700;
+            color: #f1f3f7;
+            line-height: 1;
+            margin-bottom: 10px;
+            letter-spacing: -0.05em;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .error-title {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #fafbfd;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+        }
+        
+        .dimensions {
+            font-size: 1.5rem;
+            color: #64748b;
+            margin-bottom: 60px;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+        
+        .divider {
+            height: 1px;
+            width: 200px;
+            background-color: #e2e8f0;
+            margin: 40px auto;
+        }
+        
+      
+        
+        .actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: #ac1e20;
+            color: white;
+            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: #b62727;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(240, 4, 4, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: #f1f5f9;
+            color: #b72847;
+            border: 1px solid #cbd5e1;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-2px);
+        }
+        
+       
+        
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 8rem;
+            }
+            
+            .error-title {
+                font-size: 2.5rem;
+            }
+            
+            .dimensions {
+                font-size: 1.2rem;
+            }
+            
+            .message {
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            .error-title {
+                font-size: 2rem;
+            }
+            
+            .dimensions {
+                font-size: 1rem;
+            }
+            
+            .actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">Page Not Found</h2>
+        
+        
+        <div class="divider"></div>
+        
+      
+        <div class="actions">
+            <a href="index.html" class="btn btn-primary">Go to Homepage</a>
+        </div>
+        
+       
+    </div>
+
+    <script>
+        // Simple JavaScript for page interactions
+        document.getElementById('reloadBtn').addEventListener('click', function() {
+            window.location.reload();
+        });
+        
+        // Add a subtle animation to the error code
+        document.addEventListener('DOMContentLoaded', function() {
+            const errorCode = document.querySelector('.error-code');
+            errorCode.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                errorCode.style.transition = 'transform 0.5s ease';
+                errorCode.style.transform = 'scale(1)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>

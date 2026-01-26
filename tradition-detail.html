@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bridal Lehenga Collection - Grow Fashion</title>
+    <link rel="icon" type="image/jpeg" href="images/growwpark_logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ===== GLOBAL RESET & VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background: var(--body-bg);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --nav-bg: #f7f0f0;
+            --text-color: #111;
+            --border-color: #ddd;
+            --navbar-bg: #ffffff;
+            --body-bg: #ffffff;
+            --section-light-bg: #f9f5f0;
+            --section-dark-bg: #1a1a1a;
+            --card-bg: #ffffff;
+            --footer-bg: #2c1810;
+            --footer-text: #d4c5b8;
+            --primary-color: #6b1022;
+            --primary-light: #8b1a2e;
+            --accent-color: #d32f2f;
+        }
+
+        /* ===== DARK MODE ===== */
+        body.dark {
+            --nav-bg: #1a1a1a;
+            --text-color: #f5f5f5;
+            --border-color: #333;
+            --navbar-bg: #2a2a2a;
+            --body-bg: #121212;
+            --section-light-bg: #1a1a1a;
+            --section-dark-bg: #2a2a2a;
+            --card-bg: #2a2a2a;
+            --footer-bg: #1a1a1a;
+            --footer-text: #b0b0b0;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar-wrapper {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            padding: 12px 16px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(107, 16, 34, 0.2);
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--navbar-bg);
+            border-radius: 16px;
+            padding: 8px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            min-height: 60px;
+        }
+
+        /* ===== LOGO ===== */
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            text-decoration: none;
+            color: rgb(235, 24, 123);
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            direction: ltr;
+            unicode-bidi: isolate;
+        }
+
+        body.dark .logo {
+            color: rgb(235, 24, 123);
+        }
+
+        /* ===== NAV CONTAINERS ===== */
+        .nav-left { flex: 0 0 auto; display: flex; align-items: center; }
+        .nav-center { flex: 1; display: flex; justify-content: center; align-items: center; }
+        .nav-right { flex: 0 0 auto; display: flex; align-items: center; gap: 12px; }
+
+        /* ===== CENTER MENU (DESKTOP) ===== */
+        .nav-center ul {
+            list-style: none;
+            display: flex;
+            gap: 6px;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-center ul li a {
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-color);
+            letter-spacing: 0.3px;
+            padding: 10px 14px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-center ul li a:hover,
+        .nav-center ul li a.active {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* ===== DROPDOWNS ===== */
+        .dropdown { position: relative; }
+        .dropdown-toggle { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+        .dropdown-toggle::after { content: "▼"; font-size: 10px; margin-left: 4px; transition: transform 0.3s ease; }
+        .dropdown.active .dropdown-toggle::after { transform: rotate(180deg); }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            background: var(--navbar-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            min-width: 160px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid var(--border-color);
+        }
+
+        .dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 16px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            background: transparent;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--primary-color);
+            color: white;
+            padding-left: 20px;
+        }
+
+        /* ===== ICON BUTTONS ===== */
+        .icon-btn {
+            border: none;
+            background: transparent;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            min-height: 32px;
+            color: var(--text-color);
+            flex-shrink: 0;
+        }
+
+        .icon-btn:hover {
+            background: var(--nav-bg);
+            transform: translateY(-1px);
+        }
+
+        /* ===== HAMBURGER MENU BUTTON ===== */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1002;
+            flex-shrink: 0;
+        }
+
+        .hamburger-icon {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--primary-color);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-icon::before,
+        .hamburger-icon::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: var(--primary-color);
+            left: 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-icon::before { top: -6px; }
+        .hamburger-icon::after { bottom: -6px;  }
+
+        body.dark .hamburger-icon,
+        body.dark .hamburger-icon::before,
+        body.dark .hamburger-icon::after {
+            background: var(--accent-color);
+        }
+
+        .hamburger-btn.active .hamburger-icon {
+            background: transparent;
+        }
+
+        .hamburger-btn.active .hamburger-icon::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+
+        .hamburger-btn.active .hamburger-icon::after {
+            bottom: 0;
+            transform: rotate(-45deg);
+        }
+
+        /* ===== MOBILE NAV MENU ===== */
+        .mobile-nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            z-index: 1001;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 80px 30px 30px;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+            overflow-y: auto;
+        }
+
+        .mobile-nav-menu.active {
+            right: 0;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .mobile-nav-links li {
+            width: 100%;
+        }
+
+        .mobile-nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 14px 20px;
+            border-radius: 10px;
+            display: block;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-nav-links li a:hover,
+        .mobile-nav-links li a.active {
+            background: rgba(255,255,255,0.15);
+            transform: translateX(5px);
+        }
+
+        /* ===== MOBILE DROPDOWNS ===== */
+        .mobile-dropdown { position: relative; width: 100%; }
+        
+        .mobile-dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            font-size: 17px;
+            font-weight: 500;
+            padding: 14px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .mobile-dropdown-toggle::after {
+            content: "▼";
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-dropdown.active .mobile-dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+      .mobile-dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    margin-top: 0;              /* FIX: no gap when closed */
+    padding-left: 20px;
+    width: 100%;
+    list-style: none;
+}
+
+
+        .mobile-dropdown.active .mobile-dropdown-menu {
+            max-height: 500px;
+            padding-top: 10px;
+        }
+
+        .mobile-dropdown-menu a {
+            font-size: 15px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            display: block;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .mobile-dropdown-menu a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        /* ===== OVERLAY ===== */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* ===== SIGN IN BUTTON ===== */
+        .btn-signin {
+            padding: 10px 26px;
+            border: 2px solid #b43239;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: 0.3s;
+            background-color: var(--primary-color);
+        }
+
+        .btn-signin:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ===== HERO BANNER ===== */
+        .hero-banner {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(107, 16, 34, 0.4), rgba(139, 26, 46, 0.6)), 
+                        url('images/pexels-ram-rawat-327513549-13946208.jpg') center/cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero {
+            padding: 18px 40px;
+            border: 2px solid #fff;
+            border-radius: 40px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            transition: all 0.4s ease;
+            background: transparent;
+            text-transform: uppercase;
+        }
+
+        .btn-hero:hover {
+            background: #fff;
+            color: #6b1022;
+            transform: translateY(-5px);
+        }
+
+        /* ===== SECTIONS COMMON STYLES ===== */
+        .section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title-light h2 { color: white; }
+        .section-title-light p { color: rgba(255,255,255,0.9); }
+
+        /* ===== SECTION 2: LEHENGA EVOLUTION TIMELINE ===== */
+        .lehenga-evolution { background: var(--section-light-bg); }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 40px auto 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            width: 3px;
+            height: 100%;
+            background: var(--primary-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            position: relative;
+            padding-left: 80px;
+           
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 18px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+             margin-left: 50px;
+        }
+
+        .timeline-content h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* ===== SECTION 3: FABRIC & MATERIAL SHOWCASE ===== */
+        .fabric-showcase {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .fabric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .fabric-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .fabric-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .fabric-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .fabric-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        /* ===== SECTION 4: EMBROIDERY TECHNIQUES GALLERY ===== */
+        .embroidery-gallery { background: var(--section-light-bg); }
+
+        .technique-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .technique-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .technique-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .technique-item:hover img { transform: scale(1.1); }
+
+        .technique-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(107, 16, 34, 0.9), transparent);
+            color: white;
+            padding: 40px 30px 30px;
+        }
+
+        .technique-overlay h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* ===== SECTION 5: BRIDAL ACCESSORIES ===== */
+        .bridal-accessories {
+            background: linear-gradient(rgba(107, 16, 34, 0.85), rgba(139, 26, 46, 0.85));
+            color: white;
+        }
+
+        .accessories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .accessory-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .accessory-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .accessory-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 24px 22px 28px;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+
+        /* ===== SECTION 6: CUSTOMIZATION JOURNEY ===== */
+        .customization-journey { background: var(--section-light-bg); }
+
+        .journey-steps {
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+
+        .journey-step {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .journey-step h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--footer-bg);
+            color: white;
+            padding: 60px 20px 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #f3efe6;
+            width: 100%;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        body.dark .footer-column h3 { color: #fff; }
+
+        .footer-column p {
+            color: var(--footer-text);
+            line-height: 1.8;
+            max-width: 280px;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: var(--footer-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 5px 0;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(6px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+    .social-links a {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    background: #d4af37; /* gold */
+    color: #2c1810;
+    transform: translateY(-3px);
+}
+
+
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--footer-text);
+            font-size: 13px;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1180px) {
+            .navbar { padding: 8px 18px; }
+            .logo { font-size: 24px; }
+            .nav-center ul { gap: 4px; }
+            .nav-center ul li a { font-size: 13px; padding: 8px 12px; }
+        }
+
+        @media (max-width: 1024px) {
+            .nav-center { display: none; }
+            .hamburger-btn { display: flex; }
+           
+            .hero-content h1 { font-size: 3.5rem; }
+            .section-title h2 { font-size: 2rem; }
+            .timeline::before { left: 20px; }
+            .timeline-item { padding-left: 70px; }
+            .timeline-year { font-size: 16px; padding: 8px 20px; }
+              .nav-right .icon-btn {
+        display: none;
+    }
+
+    /* Show hamburger menu */
+    .mobile-menu-btn {
+        display: flex;
+    }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content p { font-size: 1.2rem; }
+            .section-title h2 { font-size: 1.8rem; }
+            .hero-banner { height: 80vh; min-height: 500px; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-column { align-items: center; text-align: center; }
+            .footer-links { align-items: center; }
+            .accessories-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content p { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn-hero { width: 100%; max-width: 250px; }
+            .section-title h2 { font-size: 1.6rem; }
+            .timeline::before { display: none; }
+            .timeline-item { padding-left: 0; }
+            .timeline-year { position: relative; margin-bottom: 15px; }
+            .accessories-grid { grid-template-columns: 1fr; }
+            .mobile-nav-menu { width: 100%; }
+        }
+
+        @media (min-width: 1025px) {
+            .nav-center { display: flex; }
+            .hamburger-btn { display: none; }
+        }
+
+        /* ===== RTL SUPPORT ===== */
+        [dir="rtl"] .logo { direction: ltr; text-align: left; }
+        [dir="rtl"] .nav-left { flex-direction: row; margin-right: 0; margin-left: auto; }
+        [dir="rtl"] .nav-center { justify-content: center; }
+        [dir="rtl"] .nav-right { flex-direction: row; margin-left: 0; margin-right: auto; }
+        [dir="rtl"] .nav-center ul { flex-direction: row-reverse; }
+        [dir="rtl"] .dropdown-menu { left: auto; right: 50%; transform: translateX(50%) translateY(-10px); }
+        [dir="rtl"] .dropdown.active .dropdown-menu { transform: translateX(50%) translateY(5px); }
+        [dir="rtl"] .dropdown-toggle::after { margin-left: 0; margin-right: 4px; }
+        [dir="rtl"] .footer-column { align-items: flex-end; text-align: right; }
+        [dir="rtl"] .footer-links a:hover { transform: translateX(-6px); }
+        [dir="rtl"] .mobile-nav-menu { right: auto; left: -100%; }
+        [dir="rtl"] .mobile-nav-menu.active { right: auto; left: 0; }
+        [dir="rtl"] .mobile-nav-links li a:hover { transform: translateX(-5px); }
+        /* ===== MOBILE NAV MENU ===== */
+.mobile-nav-menu {
+    position: fixed;
+    top: 0;
+    right: -80vw; /* Start 80% off-screen */
+    width: 50vw; /* 80% of viewport width */
+    height: 100vh;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    z-index: 1001;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 80px 25px 30px;
+    box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+    overflow-y: auto;
+}
+
+.mobile-nav-menu.active {
+    right: 0;
+}
+
+/* ===== OVERLAY ===== */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(2px); /* Slight blur for better focus */
+}
+
+.mobile-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Adjust for different screen sizes */
+@media (max-width: 480px) {
+    .mobile-nav-menu {
+        width: 85vw; /* Slightly more on phones for better usability */
+        right: -85vw;
+        padding: 70px 20px 30px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .mobile-nav-menu {
+        width: 70vw; /* 70% on tablets */
+        right: -70vw;
+    }
+}
+
+/* RTL Support */
+[dir="rtl"] .mobile-nav-menu {
+    right: auto;
+    left: -80vw;
+}
+
+[dir="rtl"] .mobile-nav-menu.active {
+    right: auto;
+    left: 0;
+}
+@media (max-width: 480px) {
+    /* KEEP THE TIMELINE LAYOUT INTACT ON MOBILE */
+    .timeline {
+        padding-left: 18px;
+        margin-top: 25px;
+    }
+    
+    .timeline::before {
+        left: 18px;
+        width: 2px;
+        display: block !important; /* Force show on mobile */
+    }
+    
+    .timeline-item {
+        padding-left: 35px;
+        margin-bottom: 35px;
+    }
+    
+    .timeline-year {
+        left: 5px;
+        font-size: 13px;
+        padding: 6px 12px;
+        min-width: 50px;
+    }
+    
+    .timeline-content {
+        padding: 18px;
+        border-radius: 15px;
+    }
+    
+    .timeline-content h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .timeline-content p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+}
+.mobile-nav-links a.active {
+    background: rgba(255, 255, 255, 0.25);
+   
+    font-weight: 600;
+}
+ .mobile-nav-links a.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-left: 4px solid #ffd700;
+    font-weight: 600;
+}
+.mobile-nav-links a.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-left: 4px solid #ffd700;
+    font-weight: 600;
+}
+
+  .mobile-nav-links a.active {
+    background: rgba(255, 255, 255, 0.25);
+   
+    font-weight: 600;
+}
+.mobile-nav-links a.active {
+    background: rgba(255, 255, 255, 0.25);
+    
+    font-weight: 600;
+}
+.mobile-actions {
+    display: flex;
+    justify-content: space-between; /* RTL left, Theme right */
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.mobile-actions .icon-btn {
+    flex: 0; /* ✅ IMPORTANT: remove full-width stretch */
+    min-width: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.mobile-actions .icon-btn:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+}
+/* ✅ Tablet footer: 2 x 3 layout (768px – 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 50px;
+    }
+
+    .footer-column {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .footer-links {
+        align-items: flex-start;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Header -->
+    <header class="navbar-wrapper">
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="index.html" class="logo">Grow<span>Fashion</span></a>
+            </div>
+
+            <div class="nav-center">
+                <ul id="navCenter">
+                    <li class="dropdown" id="homeDropdown">
+                        <a href="#" class="dropdown-toggle">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html">Home 1</a></li>
+                            <li><a href="Home2.html">Home 2</a></li>
+                        </ul>
+                    </li>
+                  <li><a href="About.html" >About</a></li>
+            <li><a href="service.html">Services</a></li>
+              <li><a href="ethnic.html" >Ethnic</a></li>
+                    <li><a href="traditional.html" class="active">Traditional</a></li>
+            <li><a href="FAQ.html">FAQs</a></li>
+            <li><a href="contact.html">Contact </a></li>
+                    <li class="dropdown" id="dashboardDropdown">
+                        <a href="#" class="dropdown-toggle">Dashboard</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="admin.html">Admin</a></li>
+                            <li><a href="user.html">User</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="register.html">Register</a></li>
+<li>
+    <a href="sighnIn.html" class="btn-signin" style="color: white; text-decoration: none;">Sign In</a>
+</li>                 </ul>
+            </div>
+
+            <div class="nav-right">
+                <button class="icon-btn" id="rtlToggle" title="RTL / LTR">↔</button>
+                <button class="icon-btn" id="themeToggle" title="Toggle Theme">🌙</button>
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <span class="hamburger-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-menu" id="mobileNavMenu">
+        <ul class="mobile-nav-links">
+             <div class="mobile-actions">
+        <button class="icon-btn" id="mobileThemeToggle">
+            🌙 <span>Theme</span>
+        </button>
+
+        <button class="icon-btn" id="mobileRtlToggle">
+            ↔ <span>RTL</span>
+        </button>
+    </div>
+            <li class="mobile-dropdown" id="mobileHomeDropdown">
+                <a href="#" class="mobile-dropdown-toggle">Home</a>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="Home2.html">Home 2</a></li>
+                </ul>
+            </li>
+             <li><a href="About.html" >About</a></li>
+            <li><a href="service.html">Services</a></li>
+              <li><a href="ethnic.html" >Ethnic</a></li>
+                    <li><a href="traditional.html"class="active">Traditional</a></li>
+            <li><a href="FAQ.html">FAQs</a></li>
+            <li class="mobile-dropdown" id="mobileDashboardDropdown">
+                <a href="#" class="mobile-dropdown-toggle">Dashboard</a>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="admin.html">Admin</a></li>
+                    <li><a href="user.html">User</a></li>
+                </ul>
+            </li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="sighnIn.html">Sign In</a></li>
+        </ul>
+    </div>
+
+    <!-- HERO BANNER -->
+    <section class="hero-banner">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1>30–50% Off Sitewide</h1>
+            <p>Order by 12/21 for Christmas delivery. Discover the latest trends in sustainable fashion.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-hero">SHOP MEN</a>
+                <a href="#" class="btn-hero">SHOP WOMEN</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: LEHENGA EVOLUTION TIMELINE -->
+    <section class="section lehenga-evolution">
+        <div class="section-title">
+            <h2>The Evolution of Bridal Lehenga</h2>
+            <p>From royal courts to modern weddings, discover how the bridal lehenga has transformed through centuries</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-content">
+                    <h3>Mughal Influence</h3>
+                    <p>Introduction of intricate zari work, silk fabrics, and Persian motifs. Lehengas were heavily embroidered with gold and silver threads, worn by royal brides.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2026</div>
+                <div class="timeline-content">
+                    <h3>Regional Variations</h3>
+                    <p>Different regions developed unique styles - Banarasi silk from Varanasi, Kanchipuram from South India, and Bandhani from Gujarat and Rajasthan.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2020</div>
+                <div class="timeline-content">
+                    <h3>Colonial Impact</h3>
+                    <p>Introduction of new fabrics like velvet and incorporation of European lace. Lehengas became more structured with fitted cholis.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2021</div>
+                <div class="timeline-content">
+                    <h3>Modern Fusion</h3>
+                    <p>Blending traditional craftsmanship with contemporary designs. Lightweight fabrics, pastel colors, and fusion silhouettes become popular.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: FABRIC & MATERIAL SHOWCASE -->
+    <section class="section fabric-showcase">
+        <div class="section-title section-title-light">
+            <h2>Premium Fabrics & Materials</h2>
+            <p>Luxurious fabrics that form the foundation of every exquisite bridal lehenga</p>
+        </div>
+        
+        <div class="fabric-grid">
+            <div class="fabric-item">
+                <span class="fabric-icon">❄️</span>
+                <h3>Banarasi Silk</h3>
+                <p>Pure silk woven with real gold and silver threads, known for its rich texture and intricate Mughal-inspired patterns.</p>
+            </div>
+            
+            <div class="fabric-item">
+                <span class="fabric-icon">🌟</span>
+                <h3>Kanjivaram Silk</h3>
+                <p>Characterized by its vibrant colors, heavy weight, and distinctive contrast borders with temple designs.</p>
+            </div>
+            
+            <div class="fabric-item">
+                <span class="fabric-icon">💎</span>
+                <h3>Velvet & Brocade</h3>
+                <p>Rich textured fabrics often used for winter weddings, providing warmth with royal elegance and deep colors.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: EMBROIDERY TECHNIQUES GALLERY -->
+    <section class="section embroidery-gallery">
+        <div class="section-title">
+            <h2>Masterful Embroidery Techniques</h2>
+            <p>Traditional embroidery styles that transform fabric into wearable art</p>
+        </div>
+        
+        <div class="technique-showcase">
+            <div class="technique-item">
+                <img src="images/pexels-abhishek-nigam-582276386-30482896.jpg" alt="Zardozi Embroidery">
+                <div class="technique-overlay">
+                    <h3>Hindu Wedding Ceremony</h3>
+                    <p>A sacred union celebrated with vibrant rituals, traditional attire, and timeless customs that honor family, culture, and spiritual blessings.</p>
+                </div>
+            </div>
+            
+            <div class="technique-item">
+                <img src="images/pexels-alexander-mass-748453803-23439076.jpg" alt="Kashmiri Aari">
+                <div class="technique-overlay">
+                    <h3>Christian Wedding Celebration</h3>
+                    <p>An elegant ceremony centered on vows, grace, and devotion, featuring refined bridal gowns and dignified groom attire.</p>
+                </div>
+            </div>
+            
+            <div class="technique-item">
+                <img src="images/pexels-photoin-9278314.jpg" alt="Gota Patti">
+                <div class="technique-overlay">
+                    <h3>Muslim Nikah Ceremony</h3>
+                    <p>A beautiful union marked by modest elegance, meaningful traditions, and rich cultural attire for bride and groom.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: BRIDAL ACCESSORIES -->
+    <section class="section bridal-accessories">
+        <div class="section-title section-title-light">
+            <h2>Complete Bridal Ensemble</h2>
+            <p>Essential accessories that complement your bridal lehenga perfectly</p>
+        </div>
+
+        <div class="accessories-grid">
+            <div class="accessory-card">
+                <img src="images/Matha Patti.webp" alt="Matha Patti">
+                <div class="card-content">
+                    <h3>Matha Patti</h3>
+                    <p>Traditional forehead jewelry that adds royal elegance to your bridal look.</p>
+                </div>
+            </div>
+
+            <div class="accessory-card">
+                <img src="images/Haath Phool.jpg" alt="Haath Phool">
+                <div class="card-content">
+                    <h3>Haath Phool</h3>
+                    <p>Intricate hand jewelry connecting rings to wrist, symbolizing marital bonds.</p>
+                </div>
+            </div>
+
+            <div class="accessory-card">
+                <img src="images/Jhumka Earrings.webp" alt="Jhumka Earrings">
+                <div class="card-content">
+                    <h3>Jhumka Earrings</h3>
+                    <p>Traditional bell-shaped earrings with intricate designs and precious stones.</p>
+                </div>
+            </div>
+
+            <div class="accessory-card">
+                <img src="images/Rani Haar.webp" alt="Rani Haar">
+                <div class="card-content">
+                    <h3>Rani Haar</h3>
+                    <p>Long multi-layered necklace that adds grandeur to the bridal attire.</p>
+                </div>
+            </div>
+
+            <div class="accessory-card">
+                <img src="images/Kamarbandh.webp" alt="Kamarbandh">
+                <div class="card-content">
+                    <h3>Kamarbandh</h3>
+                    <p>Waist belt that accentuates the lehenga and adds definition to the silhouette.</p>
+                </div>
+            </div>
+
+            <div class="accessory-card">
+                <img src="images/Nath & Borla.webp" alt="Nath and Borla">
+                <div class="card-content">
+                    <h3>Nath & Borla</h3>
+                    <p>Traditional nose ring and maang tikka that complete the authentic bridal look.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CUSTOMIZATION JOURNEY -->
+    <section class="section customization-journey">
+        <div class="section-title">
+            <h2>Bespoke Lehenga Journey</h2>
+            <p>From concept to creation - your dream lehenga crafted just for you</p>
+        </div>
+        
+        <div class="journey-steps">
+            <div class="journey-step">
+                <h3>Design Consultation</h3>
+                <p>Share your vision with our master designers. Discuss your wedding theme, color preferences, cultural elements, and personal style. We create initial sketches based on your inspiration.</p>
+            </div>
+            
+            <div class="journey-step">
+                <h3>Fabric & Color Selection</h3>
+                <p>Choose from our exclusive collection of premium fabrics and color palettes. We help you select materials that complement your skin tone, body type, and wedding venue.</p>
+            </div>
+            
+            <div class="journey-step">
+                <h3>Precision Measurements</h3>
+                <p>Our experts take 42 precise body measurements to ensure perfect fit and comfort. We consider posture, movement, and dance requirements for your special day.</p>
+            </div>
+            
+            <div class="journey-step">
+                <h3>Master Craftsmanship</h3>
+                <p>Skilled artisans handcraft your lehenga using traditional techniques. Each piece undergoes quality checks at multiple stages to ensure perfection.</p>
+            </div>
+            
+            <div class="journey-step">
+                <h3>Final Fitting & Delivery</h3>
+                <p>Experience the magic of your first fitting. We make any necessary adjustments and ensure every detail is perfect before your special day.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+               <div class="nav-left">
+                <a href="index.html" class="logo">Grow<span>Fashion</span></a>
+            </div>
+                <p>Elevating style with sustainable, quality fashion since 2026.</p>
+                <div class="social-links">
+                  <a href="#" aria-label="Facebook">
+    <i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<a href="#" aria-label="Instagram">
+    <i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="#" aria-label="Twitter">
+    <i class="fa-brands fa-twitter"></i>
+</a>
+
+<a href="#" aria-label="Location">
+    <i class="fa-solid fa-location-dot"></i>
+</a>
+
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Shop</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Women's Collection</a></li>
+                    <li><a href="#">Men's Collection</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Shoes</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 GrowFashion User Dashboard. All rights reserved. | <a href="#" style="color: var(--accent-color); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--accent-color); text-decoration: none;">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        }
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // RTL Toggle
+        const rtlToggle = document.getElementById('rtlToggle');
+        function toggleRTL() {
+            const html = document.documentElement;
+            html.setAttribute('dir', html.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl');
+            localStorage.setItem('dir', html.getAttribute('dir'));
+        }
+        rtlToggle.addEventListener('click', toggleRTL);
+
+        // Hamburger Menu
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        
+        function toggleMobileMenu() {
+            hamburgerBtn.classList.toggle('active');
+            mobileNavMenu.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileNavMenu.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        function closeMobileMenu() {
+            hamburgerBtn.classList.remove('active');
+            mobileNavMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            document.querySelectorAll('.mobile-dropdown').forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+        
+        hamburgerBtn.addEventListener('click', toggleMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+
+        // Dropdown Functionality
+        const dropdowns = [
+            { desktop: 'homeDropdown', mobile: 'mobileHomeDropdown' },
+            { desktop: 'dashboardDropdown', mobile: 'mobileDashboardDropdown' }
+        ];
+        
+        dropdowns.forEach(({ desktop, mobile }) => {
+            const desktopDropdown = document.getElementById(desktop);
+            const mobileDropdown = document.getElementById(mobile);
+            
+            if (desktopDropdown) {
+                desktopDropdown.querySelector('.dropdown-toggle').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    dropdowns.forEach(({ desktop: other }) => {
+                        if (other !== desktop) {
+                            document.getElementById(other)?.classList.remove('active');
+                        }
+                    });
+                    desktopDropdown.classList.toggle('active');
+                });
+            }
+            
+            if (mobileDropdown) {
+                mobileDropdown.querySelector('.mobile-dropdown-toggle').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    dropdowns.forEach(({ mobile: other }) => {
+                        if (other !== mobile) {
+                            document.getElementById(other)?.classList.remove('active');
+                        }
+                    });
+                    mobileDropdown.classList.toggle('active');
+                });
+            }
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            dropdowns.forEach(({ desktop }) => {
+                const dropdown = document.getElementById(desktop);
+                if (dropdown && !dropdown.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-nav-links > li > a:not(.mobile-dropdown-toggle), .mobile-dropdown-menu a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+        
+        // Escape key to close mobile menu
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileNavMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+        
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.timeline-content, .fabric-item, .technique-item, .accessory-card, .journey-step').forEach((el) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+        
+        // Load saved preferences
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+            themeToggle.textContent = '☀️';
+        }
+        
+        if (localStorage.getItem('dir')) {
+            document.documentElement.setAttribute('dir', localStorage.getItem('dir'));
+        }
+        
+        // Hero animation
+        window.addEventListener('load', () => {
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.opacity = '0';
+                heroContent.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    heroContent.style.opacity = '1';
+                    heroContent.style.transform = 'translateY(0)';
+                    heroContent.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                }, 300);
+            }
+        });
+    </script>
+</body>
+</html> 
