@@ -103,12 +103,7 @@
             justify-content: space-between;
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: #e91e8c;
-            text-decoration: none;
-        }
+      
 
         .close-sidebar {
             display: none; /* Hidden on Desktop */
@@ -442,6 +437,27 @@
             .stats { grid-template-columns: 1fr; }
             .quick-actions { grid-template-columns: 1fr; }
         }
+         .logo {
+            font-size: 26px;
+            font-weight: 800;
+            text-decoration: none;
+          color: rgb(235, 24, 123);
+
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        /* .logo span {
+            color: #b0b0b0;
+        } */
+
+        body.dark .logo {
+            color: rgb(235, 24, 123);
+        }
+
     </style>
 </head>
 <body>

@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Grow Fashion</title>
-            <link rel="icon" type="image/jpeg" href="images\growwpark_logo.jpg">
-
+    <link rel="icon" type="image/jpeg" href="images\growwpark_logo.jpg">
     <style>
         /* ===== MINIMAL CSS ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,84 +32,18 @@
             min-height: 100vh;
         }
         
-        /* ===== NAVBAR ===== */
-        .navbar-wrapper {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            padding: 12px 16px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(107, 16, 34, 0.2);
-        }
-        
-        .navbar {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: var(--bg);
-            border-radius: 16px;
-            padding: 8px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-            min-height: 40px;
-        }
-        
-       .logo {
-            font-size: 26px;
-            font-weight: 800;
-            text-decoration: none;
-          color: rgb(235, 24, 123);
-
-            font-family: 'Inter', sans-serif;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            white-space: nowrap;
-        }
-
-        /* .logo span {
-            color: #b0b0b0;
-        } */
-
-        body.dark .logo {
-            color: rgb(235, 24, 123);
-        }
-
-        /* body.dark .logo span {
-            color: #ff8ba7;
-        } */
-        
-        .nav-right { display: flex; gap: 12px; align-items: center; }
-        
-        .icon-btn {
-            border: none;
-            background: transparent;
-            font-size: 15px;
-            cursor: pointer;
-            padding: 6px;
-            border-radius: 50%;
-            transition: all 0.3s;
-            color: var(--text);
-            min-width: 32px;
-            min-height: 32px;
-        }
-        
-        .icon-btn:hover { background: rgba(107, 16, 34, 0.1); }
-        
         /* ===== REGISTRATION FORM ===== */
         .registration-container {
-           
             display: flex;
             justify-content: center;
             align-items: center;
-            
-           padding: 30px 20px 40px;
+            padding: 30px 20px 40px;
             background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
         }
         
-        body.dark .registration-container { background: var(--bg); }
+        body.dark .registration-container { 
+            background: var(--bg); 
+        }
         
         .registration-form-wrapper {
             max-width: 500px;
@@ -119,14 +52,46 @@
             border-radius: 12px;
             box-shadow: 0 8px 30px rgba(107, 16, 34, 0.1);
             padding: 40px 30px;
+            position: relative;
         }
         
-        body.dark .registration-form-wrapper { background: #2a2a2a; }
+        body.dark .registration-form-wrapper { 
+            background: #2a2a2a; 
+        }
+        
+        /* Settings buttons container */
+        .form-settings {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .icon-btn {
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            transition: all 0.3s;
+            color: var(--text);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .icon-btn:hover { 
+            background: rgba(107, 16, 34, 0.1); 
+        }
         
         .form-logo {
             font-size: 26px;
             font-weight: 800;
-            color: var(--primary);
+            color: rgb(235, 24, 123);
             margin-bottom: 20px;
             text-decoration: none;
             display: block;
@@ -147,9 +112,13 @@
             text-align: center;
         }
         
-        body.dark .subtitle { color: #aaa; }
+        body.dark .subtitle { 
+            color: #aaa; 
+        }
         
-        .form-group { margin-bottom: 15px; }
+        .form-group { 
+            margin-bottom: 15px; 
+        }
         
         label {
             display: block;
@@ -159,7 +128,9 @@
             font-weight: 500;
         }
         
-        body.dark label { color: #ccc; }
+        body.dark label { 
+            color: #ccc; 
+        }
         
         input {
             width: 100%;
@@ -183,17 +154,21 @@
             box-shadow: 0 0 0 3px rgba(139, 26, 46, 0.1);
         }
         
-        body.dark input:focus { border-color: var(--accent); }
+        body.dark input:focus { 
+            border-color: var(--accent); 
+        }
         
-        /* .password-strength {
+        .password-strength {
             margin-top: 5px;
             height: 3px;
             background: #eee;
             border-radius: 2px;
             overflow: hidden;
-        } */
+        }
         
-        body.dark .password-strength { background: var(--border); }
+        body.dark .password-strength { 
+            background: var(--border); 
+        }
         
         .strength-bar {
             height: 100%;
@@ -233,7 +208,9 @@
             font-weight: 600;
         }
         
-        body.dark .terms a { color: var(--accent); }
+        body.dark .terms a { 
+            color: var(--accent); 
+        }
         
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
@@ -271,9 +248,13 @@
         }
         
         body.dark .divider::before,
-        body.dark .divider::after { background: var(--border); }
+        body.dark .divider::after { 
+            background: var(--border); 
+        }
         
-        .divider span { padding: 0 10px; }
+        .divider span { 
+            padding: 0 10px; 
+        }
         
         .social-register {
             display: flex;
@@ -330,74 +311,96 @@
             margin-left: 5px;
         }
         
-        body.dark .login-link a { color: var(--accent); }
+        body.dark .login-link a { 
+            color: var(--accent); 
+        }
+        
+        /* ===== RTL SUPPORT ===== */
+        [dir="rtl"] .terms input {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+        
+        [dir="rtl"] .terms label {
+            text-align: right;
+        }
+        
+        [dir="rtl"] .login-link a {
+            margin-left: 0;
+            margin-right: 5px;
+        }
+        
+        [dir="rtl"] .social-register {
+            flex-direction: row-reverse;
+        }
+        
+        [dir="rtl"] .form-settings {
+            right: auto;
+            left: 15px;
+        }
+        
+        [dir="rtl"] .password-strength-text {
+            text-align: left;
+        }
+        
+        [dir="rtl"] .icon-btn {
+            transform: scaleX(-1);
+        }
         
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .registration-form-wrapper {
-                padding: 30px 20px;
+                padding: 40px 20px 30px;
                 max-width: 450px;
             }
             
-            h1 { font-size: 22px; }
+            h1 { 
+                font-size: 22px; 
+            }
             
             .social-register {
                 flex-direction: column;
             }
+            
+            .form-settings {
+                top: 10px;
+                right: 10px;
+            }
         }
         
         @media (max-width: 480px) {
-            .navbar { padding: 8px 12px; }
-            .logo { font-size: 22px; }
-            
             .registration-form-wrapper {
-                padding: 25px 15px;
+                padding: 35px 15px 25px;
                 border-radius: 10px;
             }
             
-            .form-logo { font-size: 24px; }
+            .form-logo { 
+                font-size: 24px; 
+            }
             
-            h1 { font-size: 20px; }
+            h1 { 
+                font-size: 20px; 
+            }
+            
+            .icon-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 13px;
+            }
         }
-        @media (max-width: 1180px) {
-
-    /* Navbar spacing */
-    .navbar {
-        padding: 8px 18px;
-    }
-
-    .logo {
-        font-size: 24px;
-    }
-
-    /* Center menu tighter */
-    .nav-center ul {
-        gap: 4px;
-    }
-
-    .nav-center ul li a {
-        font-size: 13px;
-        padding: 8px 12px;
-    }
-}
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navbar
-    <header class="navbar-wrapper">
-        <nav class="navbar">
-            <a href="index.html" class="logo">Grow<span>Fashion</span></a>
-            <div class="nav-right">
-                <button class="icon-btn" id="rtlToggle">↔</button>
-                <button class="icon-btn" id="themeToggle">🌙</button>
-            </div>
-        </nav>
-    </header> -->
-
     <!-- Registration Form -->
     <div class="registration-container">
         <div class="registration-form-wrapper">
+            <!-- RTL and Theme Toggle Buttons -->
+            <div class="form-settings">
+                <button class="icon-btn" id="rtlToggle" title="Toggle RTL/LTR">↔</button>
+                <button class="icon-btn" id="themeToggle" title="Toggle Dark/Light Mode">🌙</button>
+            </div>
+            
             <a href="index.html" class="form-logo">Grow<span>Fashion</span></a>
             
             <h1>Join Our Community</h1>
@@ -422,10 +425,10 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" placeholder="Create a strong password">
-                    <!-- <div class="password-strength">
+                    <div class="password-strength">
                         <div class="strength-bar" id="strengthBar"></div>
-                    </div> -->
-                    <!-- <div class="password-strength-text" id="strengthText">Password strength</div> -->
+                    </div>
+                    <div class="password-strength-text" id="strengthText">Password strength</div>
                 </div>
                 
                 <div class="form-group">
@@ -481,13 +484,19 @@
         const rtlToggle = document.getElementById('rtlToggle');
         rtlToggle.addEventListener('click', () => {
             const html = document.documentElement;
-            html.setAttribute('dir', html.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl');
-            localStorage.setItem('rtl', html.getAttribute('dir'));
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'rtl' ? 'ltr' : 'rtl';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('rtl', newDir);
+            
+            // Update RTL button text
+            rtlToggle.innerHTML = newDir === 'rtl' ? 'LTR' : 'RTL';
         });
         
         // Load saved RTL
         if (localStorage.getItem('rtl') === 'rtl') {
             document.documentElement.setAttribute('dir', 'rtl');
+            rtlToggle.innerHTML = 'LTR';
         }
         
         // Password strength
