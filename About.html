@@ -1467,7 +1467,11 @@
             }
         }
         
-        rtlToggle.addEventListener('click', toggleRTL);
+rtlToggle.addEventListener('click', toggleRTL);
+
+if (mobileRtlToggle) {
+    mobileRtlToggle.addEventListener('click', toggleRTL);
+}
 
         // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');

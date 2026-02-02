@@ -569,7 +569,8 @@
 
         .fabric-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+justify-content: center;
             gap: 30px;
             max-width: 1200px;
             margin: 40px auto 0;
@@ -607,10 +608,10 @@
 
         .technique-showcase {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+grid-template-columns: repeat(4, 1fr);
             gap: 30px;
             max-width: 1200px;
-            margin: 40px auto 0;
+            margin: 20px auto 0;
         }
 
         .technique-item {
@@ -1255,7 +1256,15 @@
                 <img src="images/pexels-abhishek-nigam-582276386-30482896.jpg" alt="Zardozi Embroidery">
                 <div class="technique-overlay">
                     <h3>Hindu Wedding Ceremony</h3>
-                    <p>A sacred union celebrated with vibrant rituals, traditional attire, and timeless customs that honor family, culture, and spiritual blessings.</p>
+                    <p>A sacred union celebrated with vibrant rituals, traditional attire, and timeless customs that honor family.</p>
+                </div>
+            </div>
+          
+             <div class="technique-item">
+                <img src="images\India.jpg" alt="Zardozi Embroidery">
+                <div class="technique-overlay">
+                    <h3> Wedding Ceremony</h3>
+                    <p>A sacred union celebrated with  and timeless customs that honor family, culture, and spiritual blessings.</p>
                 </div>
             </div>
             
@@ -1435,13 +1444,30 @@
 
     <script>
         // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        function toggleTheme() {
-            document.body.classList.toggle('dark');
-            themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-        }
+const themeToggle = document.getElementById('themeToggle');
+const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+      function toggleTheme() {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+
+    themeToggle.textContent = isDark ? '☀️' : '🌙';
+
+    if (mobileThemeToggle) {
+        mobileThemeToggle.innerHTML = isDark
+            ? '☀️ <span>Light</span>'
+            : '🌙 <span>Dark</span>';
+    }
+
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
         themeToggle.addEventListener('click', toggleTheme);
+        themeToggle.addEventListener('click', toggleTheme);
+
+if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+}
+
 
         // RTL Toggle
         const rtlToggle = document.getElementById('rtlToggle');
@@ -1450,7 +1476,11 @@
             html.setAttribute('dir', html.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl');
             localStorage.setItem('dir', html.getAttribute('dir'));
         }
-        rtlToggle.addEventListener('click', toggleRTL);
+rtlToggle.addEventListener('click', toggleRTL);
+
+if (mobileRtlToggle) {
+    mobileRtlToggle.addEventListener('click', toggleRTL);
+}
 
         // Hamburger Menu
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -1552,10 +1582,15 @@
         });
         
         // Load saved preferences
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark');
-            themeToggle.textContent = '☀️';
-        }
+       if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+    themeToggle.textContent = '☀️';
+
+    if (mobileThemeToggle) {
+        mobileThemeToggle.innerHTML = '☀️ <span>Light</span>';
+    }
+}
+
         
         if (localStorage.getItem('dir')) {
             document.documentElement.setAttribute('dir', localStorage.getItem('dir'));

@@ -931,7 +931,7 @@
 
         @media (max-width: 1024px) {
             .related-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -1610,7 +1610,7 @@
                         <div class="related-price">₹6,499</div>
                     </div>
                 </div>
-                <!-- <div class="related-card">
+                <div class="related-card">
                     <div class="related-image">
                         <img src="images\coquette_nails_8_1.webp" alt="Wedding Saree">
                     </div>
@@ -1618,7 +1618,7 @@
                         <h3>Bridal Wedding Saree</h3>
                         <div class="related-price">₹32,999</div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </main>
@@ -1885,5 +1885,72 @@
             }
         });
     </script>
+    <script>
+/* ============================
+   GET ALL TOGGLE BUTTONS
+============================ */
+
+// Desktop
+const themeToggle = document.getElementById("themeToggle");
+const rtlToggle   = document.getElementById("rtlToggle");
+
+// Mobile (❌ THESE WERE MISSING — MAIN BUG)
+const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+const mobileRtlToggle   = document.getElementById("mobileRtlToggle");
+
+
+/* ============================
+   THEME TOGGLE FUNCTION
+============================ */
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+
+    const isDark = document.body.classList.contains("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+}
+
+
+/* ============================
+   RTL TOGGLE FUNCTION
+============================ */
+function toggleRTL() {
+    const html = document.documentElement;
+    const isRTL = html.getAttribute("dir") === "rtl";
+
+    html.setAttribute("dir", isRTL ? "ltr" : "rtl");
+    localStorage.setItem("dir", isRTL ? "ltr" : "rtl");
+}
+
+
+/* ============================
+   ATTACH EVENTS (THIS WAS MISSING)
+============================ */
+
+// Desktop
+themeToggle?.addEventListener("click", toggleTheme);
+rtlToggle?.addEventListener("click", toggleRTL);
+
+// Mobile ✅ FIX
+mobileThemeToggle?.addEventListener("click", toggleTheme);
+mobileRtlToggle?.addEventListener("click", toggleRTL);
+
+
+/* ============================
+   LOAD SAVED STATE
+============================ */
+window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    const savedDir   = localStorage.getItem("dir");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark");
+    }
+
+    if (savedDir === "rtl") {
+        document.documentElement.setAttribute("dir", "rtl");
+    }
+});
+</script>
+
 </body>
 </html>

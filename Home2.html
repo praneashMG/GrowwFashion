@@ -539,8 +539,8 @@
         .collections-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 30px;
-            max-width: 1200px;
+            gap: 20px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -548,7 +548,9 @@
             .collections-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (min-width: 1024px) {
-            .collections-grid { grid-template-columns: repeat(3, 1fr); }
+            .collections-grid { grid-template-columns: repeat(4, 1fr);
+
+ }
         }
 
         .collection-card {
@@ -557,6 +559,7 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+             grid-template-columns: repeat(3, 1fr);
         }
 
         body.dark .collection-card { background: #2a2a2a; }
@@ -1291,6 +1294,13 @@ body.dark .look-info strong {
         font-size: 13px;
     }
 }
+/* ===== OCCASION SECTION – TABLET VIEW (2x2 GRID) ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .occasion-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
 
 
 
@@ -1439,6 +1449,22 @@ body.dark .look-info strong {
                         <a href="#" class="btn btn-outline">View Collection</a>
                     </div>
                 </div>
+
+            </div>
+             <div class="collection-card">
+                <div class="collection-tag">New Arrival</div>
+                <div class="collection-image">
+                    <img src="images\pexels-pnw-prod-8997984.jpg" alt="Summer Collection">
+                </div>
+                <div class="collection-content">
+                    <h3>Winter  Collection</h3>
+                    <p>Lightweight fabrics and breezy designs perfect for sunny days. Our summer collection combines comfort with style.</p>
+                    <div class="collection-price">
+                        <span class="price">From $89</span>
+                        <a href="#" class="btn btn-outline">View Collection</a>
+                    </div>
+                </div>
+                
             </div>
             
             <div class="collection-card">
@@ -1448,7 +1474,7 @@ body.dark .look-info strong {
                 </div>
                 <div class="collection-content">
                     <h3>Evening Elegance</h3>
-                    <p>Make a statement at any event with our exclusive evening wear collection. Sophisticated designs for special occasions.</p>
+                    <p>Make a statement at any event with our exclusive evening wear collection. Sophisticated occasions.</p>
                     <div class="collection-price">
                         <span class="price">From $19</span>
                         <a href="#" class="btn btn-outline">View Collection</a>
@@ -1719,15 +1745,32 @@ body.dark .look-info strong {
 
     <script>
         // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
+const themeToggle = document.getElementById('themeToggle');
+const mobileThemeToggle = document.getElementById('mobileThemeToggle');
         
-        function toggleTheme() {
-            document.body.classList.toggle('dark');
-            const isDark = document.body.classList.contains('dark');
-            themeToggle.textContent = isDark ? '☀️' : '🌙';
-        }
+      function toggleTheme() {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+
+    themeToggle.textContent = isDark ? '☀️' : '🌙';
+
+    if (mobileThemeToggle) {
+        mobileThemeToggle.innerHTML = isDark
+            ? '☀️ <span>Light</span>'
+            : '🌙 <span>Dark</span>';
+    }
+
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
         
         themeToggle.addEventListener('click', toggleTheme);
+        themeToggle.addEventListener('click', toggleTheme);
+
+if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+}
+
 
         // RTL Toggle - Modified to keep GrowFashion text unchanged
         const rtlToggle = document.getElementById('rtlToggle');
@@ -1761,7 +1804,11 @@ body.dark .look-info strong {
             }
         }
         
-        rtlToggle.addEventListener('click', toggleRTL);
+rtlToggle.addEventListener('click', toggleRTL);
+
+if (mobileRtlToggle) {
+    mobileRtlToggle.addEventListener('click', toggleRTL);
+}
 
         // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1841,10 +1888,15 @@ body.dark .look-info strong {
         });
 
         // Load saved theme
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark');
-            themeToggle.textContent = '☀️';
-        }
+      if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+    themeToggle.textContent = '☀️';
+
+    if (mobileThemeToggle) {
+        mobileThemeToggle.innerHTML = '☀️ <span>Light</span>';
+    }
+}
+
     </script>
     <script>
     // Highlight active mobile nav link

@@ -1673,15 +1673,32 @@ body.dark .contact-cta p {
 
     <script>
         // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
+const themeToggle = document.getElementById('themeToggle');
+const mobileThemeToggle = document.getElementById('mobileThemeToggle');
         
-        function toggleTheme() {
-            document.body.classList.toggle('dark');
-            const isDark = document.body.classList.contains('dark');
-            themeToggle.textContent = isDark ? '☀️' : '🌙';
-        }
+       function toggleTheme() {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+
+    themeToggle.textContent = isDark ? '☀️' : '🌙';
+
+    if (mobileThemeToggle) {
+        mobileThemeToggle.innerHTML = isDark
+            ? '☀️ <span>Light</span>'
+            : '🌙 <span>Dark</span>';
+    }
+
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
         
         themeToggle.addEventListener('click', toggleTheme);
+        themeToggle.addEventListener('click', toggleTheme);
+
+if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('click', toggleTheme);
+}
+
 
         // RTL Toggle - UPDATED TO KEEP LOGO ON LEFT
         const rtlToggle = document.getElementById('rtlToggle');
@@ -1697,7 +1714,11 @@ body.dark .contact-cta p {
             }
         }
         
-        rtlToggle.addEventListener('click', toggleRTL);
+rtlToggle.addEventListener('click', toggleRTL);
+
+if (mobileRtlToggle) {
+    mobileRtlToggle.addEventListener('click', toggleRTL);
+}
 
         // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1837,10 +1858,15 @@ body.dark .contact-cta p {
         });
 
         // Load saved theme
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark');
-            themeToggle.textContent = '☀️';
-        }
+       if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark');
+    themeToggle.textContent = '☀️';
+
+    if (mobileThemeToggle) {
+        mobileThemeToggle.innerHTML = '☀️ <span>Light</span>';
+    }
+}
+
     </script>
     <script>
     // Highlight active mobile nav link
